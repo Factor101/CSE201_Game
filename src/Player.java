@@ -1,5 +1,3 @@
-package src;
-
 /**
  * Class to represent the player, containing their
  * info and possible actions.
