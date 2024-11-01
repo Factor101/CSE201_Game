@@ -57,4 +57,12 @@ public class Command {
         return new Point(-1, 0);
     }
 
+    /**
+     * 
+     * @param cmdName
+     * @return
+     */
+    public static Command resolveCommand(String cmdName) {
+    	return null;
+    }
 }
