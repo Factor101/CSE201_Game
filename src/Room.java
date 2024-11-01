@@ -1,5 +1,3 @@
-package src;
-
 import java.awt.Point;
 
 public class Room {
@@ -31,3 +29,4 @@ public class Room {
         return roomSpecificCommands;
     }
 }
+
