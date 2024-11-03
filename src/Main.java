@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main
@@ -19,10 +18,11 @@ public class Main
     {
         Player player = new Player();
         CommandHandler commandHandler = new CommandHandler();
+        Command cmd = new Command();
 
         while(isRunning)
         {
-
+            return;
         }
     }
 }

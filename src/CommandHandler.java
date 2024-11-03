@@ -1,25 +1,32 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CommandHandler
 {
-    private final ArrayList<Command> defaultCommands = new ArrayList<>();
+    private final HashMap<String, Command<?>> commands = new HashMap<>();
     private Room currentRoom = null;
 
     public CommandHandler()
     {
     }
 
-    public CommandHandler(ArrayList<Command> defaultCommands)
+    public <T> CommandHandler(final HashMap<String, Command<T>> commands)
     {
-        this.defaultCommands.addAll(defaultCommands);
+        this.commands.putAll(commands);
     }
 
-    public boolean handleCommand(final String cmdName)
+    public <T> boolean registerCommand(final Command<T> cmd)
+    {
+        return null == this.commands.put(cmd.getName(), cmd);
+    }
+
+    public <T> handleCommand(final String cmdName)
     {
         return this.handleCommand(Command.resolveCommand(cmdName));
     }
 
-    public boolean handleCommand(final Command cmd)
+    public <T> handleCommand(final Command<T> cmd)
     {
         return true;
     }
