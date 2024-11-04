@@ -1,5 +1,10 @@
 /**
- * Record class to represent the result of a command.
+ * Class: Intro to Software Engineering
+ * @author Stefan Wenzke, Ilhaan Artan, Nathan Anthony, Matthew Heffernan, Brad Martin, Rafael Santell-Colon
+ * @version 1.0
+ * Course : CSE 201-C Fall 2024
+ * Written: November 3, 2024
+ * Purpose: Record class to represent the result of a command.
  *
  * @param result    The result of the command
  * @param message   The message to display to the user
