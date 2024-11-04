@@ -1,39 +1,94 @@
-import java.util.ArrayList;
+import java.awt.Point;
 import java.util.HashMap;
-import java.util.Map;
 
+
+/**
+ * Class to handle commands and their execution.
+ *
+ * @version 1.0
+ */
 public class CommandHandler
 {
-    private final HashMap<String, Command<?>> commands = new HashMap<>();
-    private Room currentRoom = null;
+    /**
+     * HashMap of executable commands.
+     * (k, v) -> (command name, command).
+     * Default commands are initialized here.
+     */
+    private static final HashMap<String, Command<?>> commands = new HashMap<>()
+    {{
+        // Help command
+        put("help", new Command<Void>("help", 0, args -> {
+            System.out.println("Commands:");
+            CommandHandler.commands.forEach((k, v) -> System.out.println(k));
+            System.out.println();
+            return CommandResult.success(null);
+        }));
 
+        // Move command
+        put("go", new Command<Point>("go", 1, args -> {
+
+            // cardinal directions as vectors
+            Point pt = switch(args[0].toLowerCase())
+            {
+                case "north" -> new Point(0, 1);
+                case "east" -> new Point(1, 0);
+                case "south" -> new Point(0, -1);
+                case "west" -> new Point(-1, 0);
+                default -> null;
+            };
+
+            if(pt == null)
+            {
+                return CommandResult.fail("Invalid direction");
+            }
+
+            return CommandResult.success(pt, "You ventured " + args[0]);
+        }));
+    }};
+
+    /**
+     * Default constructor.
+     */
     public CommandHandler()
     {
     }
 
-    public <T> CommandHandler(final HashMap<String, Command<T>> commands)
+    /**
+     * Constructor to initialize the command handler with a set of commands.
+     *
+     * @param commands HashMap of commands to initialize the command handler with.
+     */
+    public CommandHandler(final HashMap<String, Command<?>> commands)
     {
-        this.commands.putAll(commands);
+        CommandHandler.commands.putAll(commands);
     }
 
-    public <T> boolean registerCommand(final Command<T> cmd)
+    /**
+     * Registers a command with the command handler.
+     *
+     * @param cmd Command to register.
+     * @return true if the command was successfully registered, false otherwise.
+     */
+    public boolean registerCommand(final Command<?> cmd)
     {
-        return null == this.commands.put(cmd.getName(), cmd);
+        return null == CommandHandler.commands.put(cmd.getName(), cmd);
     }
 
-    public <T> handleCommand(final String cmdName)
+    /**
+     * Calls a command with the given arguments.
+     *
+     * @param cmdName Name of the command to call.
+     * @param args    Arguments to pass to the command.
+     * @return CommandResult object containing the result of the command.
+     */
+    public CommandResult<?> callCommand(final String cmdName, final String[] args)
     {
-        return this.handleCommand(Command.resolveCommand(cmdName));
-    }
+        if(!CommandHandler.commands.containsKey(cmdName))
+        {
+            return CommandResult.fail(cmdName + " means nothing here.");
+        }
 
-    public <T> handleCommand(final Command<T> cmd)
-    {
-        return true;
-    }
-
-    public Room setRoom(Room room)
-    {
-        this.currentRoom = room;
-        return this.currentRoom;
+        return CommandHandler.commands.get(cmdName)
+                                      .exec(args);
     }
 }

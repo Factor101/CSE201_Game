@@ -1,95 +1,74 @@
-import java.awt.Point;
+import java.util.function.Function;
 
+/**
+ * Represents a command that can be executed by the user.
+ *
+ * @param <T> the type of the result of the command
+ * @version 1.0
+ */
 public class Command<T>
 {
-    public static interface CommandRun<T>
-    {
-        T run(String s);
-    }
-
-    private String cmdName;
+    private final String cmdName; // Name of the command
+    private final int expectedArgc; // Expected number of arguments TODO: add support argc in range
+    private final Function<String[], CommandResult<T>> callback; // Callback function of commmand
 
     /**
-     * Creates new command
-     */
-    public Command()
-    {
-        CommandRun<String> e = (s) -> {
-            return s + "A";
-        };
-
-        System.out.println(e.run("foo"));
-    }
-
-
-    public Command(String cmdName, CommandRun<T> run)
-    {
-
-    }
-
-    /**
-     * Command to go with no direction
+     * Constructor to create a command with a name, expected number of arguments, and callback function.
      *
-     * @return message telling player to specify a direction
+     * @param cmdName      Name of the command
+     * @param expectedArgc Expected number of arguments
+     * @param callback     Callback function of the command
      */
-    public static String go()
+    public Command(String cmdName,
+                   int expectedArgc,
+                   Function<String[], CommandResult<T>> callback)
     {
-        return "Go where?";
+        this.cmdName = cmdName;
+        this.expectedArgc = expectedArgc;
+        this.callback = callback;
     }
 
     /**
-     * Command for going north
+     * Constructor to create a command with a name and callback function.
      *
-     * @return a point value to be added to current room position to determine
-     * if the player can move to an new room
+     * @param cmdName  Name of the command
+     * @param callback Callback function of the command
      */
-    public static Point goNorth()
+    public Command(String cmdName,
+                   Function<String[], CommandResult<T>> callback)
     {
-        return new Point(0, 1);
+        this.cmdName = cmdName;
+        this.expectedArgc = 0;
+        this.callback = callback;
     }
 
     /**
-     * Command for going east
+     * Executes the command with the given arguments.
      *
-     * @return a point value to be added to current room position to determine
-     * if the player can move to an new room
+     * @param args Arguments to pass to the command
+     * @return Result of the command
      */
-    public static Point goEast()
+    public CommandResult<T> exec(String[] args)
     {
-        return new Point(1, 0);
+        return args.length == this.expectedArgc ? this.callback.apply(args)
+                                                : CommandResult.failArgs(args, this.expectedArgc);
     }
 
     /**
-     * Command for going south
+     * Executes the command with no arguments.
      *
-     * @return a point value to be added to current room position to determine
-     * if the player can move to an new room
+     * @return Result of the command
      */
-    public static Point goSouth()
+    public CommandResult<T> exec()
     {
-        return new Point(0, -1);
+        return this.callback.apply(new String[0]);
     }
 
     /**
-     * Command for going west
+     * Returns the name of the command.
      *
-     * @return a point value to be added to current room position to determine
-     * if the player can move to an new room
+     * @return Name of the command
      */
-    public static Point goWest()
-    {
-        return new Point(-1, 0);
-    }
-
-    /**
-     * @param cmdName
-     * @return
-     */
-    public static Command resolveCommand(String cmdName)
-    {
-        return null;
-    }
-
     public String getName()
     {
         return this.cmdName;

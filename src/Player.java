@@ -1,45 +1,65 @@
 import java.util.ArrayList;
 
 /**
- * Class to represent the player, containing their
+ * Abstract class to represent the player, containing their
  * info and possible actions.
  *
  * @version 1.0
  */
-public class Player
+public abstract class Player
 {
     // The inventory of the player.
-    private ArrayList<Item> inventory = new ArrayList<>();
+    private static final ArrayList<Item> inventory = new ArrayList<>();
 
     // The current room the player is in.
-    private Room currentRoom;
+    private static Room currentRoom = null;
 
     // The limit of items a player can hold.
-    final private int inventoryLimit = 5;
+    private static final int inventoryLimit = 5;
 
     /**
-     * Constructor method.
+     * Method to add an item to the player's inventory.
+     *
+     * @param item - The item to be added.
+     * @return True if the item was added, false otherwise.
      */
-    Player()
+    public static boolean addItem(Item item)
     {
+        if(Player.inventory.size() < Player.inventoryLimit)
+        {
+            return Player.inventory.add(item);
+        }
+
+        return false;
     }
 
     /**
      * Method to determine if the player has a given item.
      *
-     * @param item - The item being tested for.
-     * @return True if the player has the item, false otherwise.
+     * @param item - The item to get.
+     * @return The item if the player has the item, null otherwise.
      */
-    public boolean hasItem(Item item)
+    public static Item getItem(Item item)
     {
-        for (final Item e : this.inventory)
+        // iterate over inventory until item is found
+        for(final Item e : Player.inventory)
         {
-            if (e == item)
+            if(e == item)
             {
-                return true;
+                return e;
             }
         }
 
-        return false;
+        return null;
+    }
+
+    public static Room getCurrentRoom()
+    {
+        return Player.currentRoom;
+    }
+
+    public static void setCurrentRoom(Room room)
+    {
+        Player.currentRoom = room;
     }
 }
