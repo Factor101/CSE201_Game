@@ -1,7 +1,12 @@
 import java.awt.Point;
 
 /**
- * Class to represent a room in the game.
+ * Class: Intro to Software Engineering
+ * @author Stefan Wenzke, Ilhaan Artan, Nathan Anthony, Matthew Heffernan, Brad Martin, Rafael Santell-Colon
+ * @version 1.0
+ * Course : CSE 201-C Fall 2024
+ * Written: November 3, 2024
+ * Purpose: Class to represent a room in the game.
  *
  * @version 1.0
  */

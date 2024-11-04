@@ -3,7 +3,12 @@ import java.util.HashMap;
 
 
 /**
- * Class to handle commands and their execution.
+ * Class: Intro to Software Engineering
+ * @author Stefan Wenzke, Ilhaan Artan, Nathan Anthony, Matthew Heffernan, Brad Martin, Rafael Santell-Colon
+ * @version 1.0
+ * Course : CSE 201-C Fall 2024
+ * Written: November 3, 2024
+ * Purpose: Class to handle commands and their execution.
  *
  * @version 1.0
  */
