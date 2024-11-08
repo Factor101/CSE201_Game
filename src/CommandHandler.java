@@ -49,6 +49,17 @@ public class CommandHandler
 
             return CommandResult.success(pt, "You ventured " + args[0]);
         }));
+        
+        // Inventory Command
+        put("inventory", new Command<Void>("inventory", 0, args -> {
+            System.out.println("You inventory consists of:");
+            
+            for(Item i : Player.getInventory()) {
+                System.out.println(i.getName() + ", ");
+            }
+            
+            return CommandResult.success(null);
+        }));
     }};
 
     /**

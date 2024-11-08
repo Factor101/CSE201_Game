@@ -57,6 +57,10 @@ public abstract class Player
 
         return null;
     }
+    
+    public static ArrayList<Item> getInventory() {
+        return Player.inventory;
+    }
 
     public static Room getCurrentRoom()
     {
