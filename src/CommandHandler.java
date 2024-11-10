@@ -85,7 +85,7 @@ public class CommandHandler
      * @param cmd Command to register.
      * @return true if the command was successfully registered, false otherwise.
      */
-    public boolean registerCommand(final Command<?> cmd)
+    public static boolean registerCommand(final Command<?> cmd)
     {
         return null == CommandHandler.commands.put(cmd.getName(), cmd);
     }
@@ -97,7 +97,7 @@ public class CommandHandler
      * @param args    Arguments to pass to the command.
      * @return CommandResult object containing the result of the command.
      */
-    public CommandResult<?> callCommand(final String cmdName, final String[] args)
+    public static CommandResult<?> callCommand(final String cmdName, final String[] args)
     {
         if(!CommandHandler.commands.containsKey(cmdName))
         {

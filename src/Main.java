@@ -11,14 +11,10 @@
  */
 public class Main
 {
-
     public static void main(String[] args)
     {
         // temporary line for demo
         Player.setCurrentRoom(new Room("Demo_Room", "The room smells of Lorem ipsum dolor sit amet"));
-
-        // register the command handler
-        InputHandler.registerCommandHandler(new CommandHandler());
 
         // main event loop
         // flag to control the main event loop
