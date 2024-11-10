@@ -22,10 +22,11 @@ public class Main
         while(isRunning)
         {
             // prompt, parse, and execute the command
-            final String command = InputHandler.promptCommand("Enter a command:");
-            final CommandResult<?> result = InputHandler.parseAndExecute(command);
+            // user will enter a command + args (where applicable)
+            final String userInput = InputHandler.promptCommand("Enter a command:");
+            final CommandResult<?> result = InputHandler.parseAndExecute(userInput);
 
-            // output the result
+            // output the resultg
             if(result.isSuccess())
             {
                 final String message = result.message();
