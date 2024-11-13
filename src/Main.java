@@ -26,7 +26,7 @@ public class Main
             final String userInput = InputHandler.promptCommand("Enter a command:");
             final CommandResult<?> result = InputHandler.parseAndExecute(userInput);
 
-            // output the resultg
+            // output the result
             if(result.isSuccess())
             {
                 final String message = result.message();

@@ -58,7 +58,8 @@ public abstract class Player
         return null;
     }
     
-    public static ArrayList<Item> getInventory() {
+    public static ArrayList<Item> getInventory()
+    {
         return Player.inventory;
     }
 
