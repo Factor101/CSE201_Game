@@ -1,3 +1,6 @@
+import java.awt.Point;
+import java.util.ArrayList;
+
 /**
  * Class: Intro to Software Engineering
  * @author Stefan Wenzke, Ilhaan Artan, Nathan Anthony, Matthew Heffernan, Brad Martin, Rafael Santell-Colon
@@ -13,8 +16,11 @@ public class Main
 {
     public static void main(String[] args)
     {
+        Room[] rooms = new Room[8];
+        rooms[0] = new Room("Demo_Room", "The room smells of Lorem ipsum dolor sit amet", new Point(0, 0), null, null);
+        
         // temporary line for demo
-        Player.setCurrentRoom(new Room("Demo_Room", "The room smells of Lorem ipsum dolor sit amet"));
+        Player.setCurrentRoom(rooms[0]);
 
         // main event loop
         // flag to control the main event loop
