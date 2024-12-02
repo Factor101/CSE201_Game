@@ -2,7 +2,6 @@ package game;
 
 import rooms.Room;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -16,13 +15,25 @@ import java.util.ArrayList;
  */
 public class World
 {
-    private final static ArrayList<ArrayList<Room>> rooms = new ArrayList<>();
+    private final static int MAX_HEIGHT_LENGTH = 10;
+    private final static ArrayList<ArrayList<Room>> rooms = new ArrayList<ArrayList<Room>>(MAX_HEIGHT_LENGTH);
 
-    public World()
-    {}
+    private World()
+    {
+    }
+
+    public static void init()
+    {
+        World.initializeRooms();
+        World.initializeDefaultCommands();
+    }
 
     public static void initializeRooms()
     {
+        for(int i = 0; i < MAX_HEIGHT_LENGTH; ++i)
+        {
+            World.rooms.add(new ArrayList<Room>(MAX_HEIGHT_LENGTH));
+        }
     }
 
     public static void initializeDefaultCommands()
@@ -67,7 +78,7 @@ public class World
         return World.rooms;
     }
 
-    public static Room getRoom(Point point)
+    public static Room getRoom(int[] point)
     {
         return null;
     }

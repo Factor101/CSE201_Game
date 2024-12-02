@@ -13,7 +13,7 @@ import java.util.HashMap;
  * @author Stefan Wenzke, Ilhaan Artan, Nathan Anthony, Matthew Heffernan, Brad Martin, Rafael Santell-Colon
  * @version 1.0
  */
-public class Room
+public abstract class Room
 {
     private final String name; // name of the room
     private final ArrayList<Item> items; // items within the room
@@ -48,13 +48,20 @@ public class Room
      */
     public Room(String name, String desc, Point pt, ArrayList<Item> items, HashMap<String, Command<?>> commands)
     {
-        this(name, desc, new int[]{(int) pt.getX(), (int) pt.getY()}, items, commands);
+        this(name, desc, new int[]{ (int) pt.getX(), (int) pt.getY() }, items, commands);
     }
 
     public Room(String name, String desc)
     {
-        this(name, desc, new int[]{0, 0}, new ArrayList<Item>(), new HashMap<>());
+        this(name, desc, new int[]{ 0, 0 }, new ArrayList<Item>(), new HashMap<>());
     }
+
+    /**
+     * Decides if user should be allowed to enter.
+     *
+     * @return true if player can enter the room.
+     */
+    public abstract boolean checkEntry();
 
     /**
      * Returns the room's name

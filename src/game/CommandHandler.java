@@ -1,5 +1,7 @@
 package game;
 
+import rooms.Room;
+
 import java.awt.Point;
 import java.util.HashMap;
 
@@ -30,12 +32,12 @@ public class CommandHandler
         // Move command
         put("go", new Command<Point>("go", 1, args -> {
             // cardinal directions as vectors
-            Point pt = switch(args[0].toLowerCase())
+            int[] pt = switch(args[0].toLowerCase())
             {
-                case "north" -> new Point(0, 1);
-                case "east" -> new Point(1, 0);
-                case "south" -> new Point(0, -1);
-                case "west" -> new Point(-1, 0);
+                case "north" -> new int[]{ 0, 1 };
+                case "east" -> new int[]{ 1, 0 };
+                case "south" -> new int[]{ 0, -1 };
+                case "west" -> new int[]{ -1, 0 };
                 default -> null;
             };
 
@@ -43,6 +45,18 @@ public class CommandHandler
             {
                 return CommandResult.fail("Invalid direction");
             }
+
+            int[] curPt = Player.getPosition();
+            pt[0] += curPt[0];
+            pt[1] += curPt[1];
+
+            final Room room = World.getRoom(pt);
+            if(room == null)
+            {
+                return CommandResult.fail("You can't go that way.");
+            }
+
+            Player.setPosition(pt);
 
 
 
