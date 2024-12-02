@@ -54,7 +54,14 @@ public class CommandHandler
                 return CommandResult.fail("You can't go that way.");
             }
 
+            // check entry conditions
+            if(room.checkEntry())
+            {
+
+            }
+
             Player.setPosition(pt);
+            Player.setCurrentRoom(room);
 
 
 

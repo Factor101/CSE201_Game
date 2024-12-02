@@ -70,11 +70,6 @@ public abstract class Player
         Player.position[1] = pt[1];
     }
 
-    public static Room moveBy(int[] pt)
-    {
-        return null; //TODO: implement
-    }
-
     public static ArrayList<Item> getInventory()
     {
         return Player.inventory;
