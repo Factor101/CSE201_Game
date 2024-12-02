@@ -1,11 +1,9 @@
-package rooms;
+package game;
 
-import game.Command;
-import game.Item;
-
-import java.awt.*;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.function.Function;
 
 /**
  * Class: Intro to Software Engineering
@@ -20,6 +18,7 @@ public class Room
     private final String description; // room description
     private final int[] position; // room position as a Point
     private final HashMap<String, Command<?>> contextualCommands; // commands unique to this room
+    private Function<Void, Boolean> checkEntry;
 
     /**
      * Creates a new room.
@@ -29,13 +28,19 @@ public class Room
      * @param pt       room's position represented as a point {x, y}
      * @param commands list of commands unique to this room
      */
-    public Room(String name, String desc, int[] pt, ArrayList<Item> items, HashMap<String, Command<?>> commands)
+    public Room(String name,
+                String desc,
+                int[] pt,
+                ArrayList<Item> items,
+                HashMap<String, Command<?>> commands,
+                Function<Void, Boolean> checkEntry)
     {
         this.name = name;
         this.items = items;
         this.description = desc;
         this.position = pt;
         this.contextualCommands = commands;
+        this.checkEntry = checkEntry;
     }
 
     /**
@@ -46,14 +51,39 @@ public class Room
      * @param pt       room's position represented as a Point
      * @param commands list of commands unique to this room
      */
-    public Room(String name, String desc, Point pt, ArrayList<Item> items, HashMap<String, Command<?>> commands)
+    public Room(String name,
+                String desc,
+                Point pt,
+                ArrayList<Item> items,
+                HashMap<String, Command<?>> commands,
+                Function<Void, Boolean> checkEntry)
     {
-        this(name, desc, new int[]{(int) pt.getX(), (int) pt.getY()}, items, commands);
+        this(name, desc, new int[]{ (int) pt.getX(), (int) pt.getY() }, items, commands, checkEntry);
     }
 
     public Room(String name, String desc)
     {
-        this(name, desc, new int[]{0, 0}, new ArrayList<Item>(), new HashMap<>());
+        this(name, desc, new int[]{ 0, 0 }, new ArrayList<Item>(), new HashMap<>(), null);
+    }
+
+    /**
+     * Checks if the player can enter the room.
+     *
+     * @return true if checkEntry is null (not specified) or if checkEntry returns true
+     */
+    public Boolean checkEntry()
+    {
+        return this.checkEntry == null || this.checkEntry.apply(null);
+    }
+
+    public void addCommand(String name, Command<?> command)
+    {
+        this.contextualCommands.put(name, command);
+    }
+
+    public void setGetEntry(Function<Void, Boolean> checkEntry)
+    {
+        this.checkEntry = checkEntry;
     }
 
     /**
