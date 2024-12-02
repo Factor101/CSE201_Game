@@ -61,6 +61,23 @@ public class Room
         this(name, desc, new int[]{ (int) pt.getX(), (int) pt.getY() }, items, commands, checkEntry);
     }
 
+    /**
+     * Creates a new room with a Point instead of int[].
+     *
+     * @param items    list of items in the room
+     * @param desc     description of the room
+     * @param pt       room's position represented as a Point
+     * @param commands list of commands unique to this room
+     */
+    public Room(String name,
+                String desc,
+                Point pt,
+                ArrayList<Item> items,
+                HashMap<String, Command<?>> commands)
+    {
+        this(name, desc, new int[]{ (int) pt.getX(), (int) pt.getY() }, items, commands, null);
+    }
+
     public Room(String name, String desc)
     {
         this(name, desc, new int[]{ 0, 0 }, new ArrayList<Item>(), new HashMap<>(), null);
