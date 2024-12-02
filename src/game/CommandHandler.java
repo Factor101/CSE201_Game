@@ -1,15 +1,13 @@
+package game;
+
 import java.awt.Point;
 import java.util.HashMap;
 
 
 /**
  * Class: Intro to Software Engineering
- * @author Stefan Wenzke, Ilhaan Artan, Nathan Anthony, Matthew Heffernan, Brad Martin, Rafael Santell-Colon
- * @version 1.0
- * Course : CSE 201-C Fall 2024
- * Written: November 3, 2024
- * Purpose: Class to handle commands and their execution.
  *
+ * @author Stefan Wenzke, Ilhaan Artan, Nathan Anthony, Matthew Heffernan, Brad Martin, Rafael Santell-Colon
  * @version 1.0
  */
 public class CommandHandler
@@ -31,7 +29,6 @@ public class CommandHandler
 
         // Move command
         put("go", new Command<Point>("go", 1, args -> {
-
             // cardinal directions as vectors
             Point pt = switch(args[0].toLowerCase())
             {
@@ -47,17 +44,20 @@ public class CommandHandler
                 return CommandResult.fail("Invalid direction");
             }
 
+
+
             return CommandResult.success(pt, "You ventured " + args[0]);
         }));
-        
-        // Inventory Command
+
+        // Inventory game.Command
         put("inventory", new Command<Void>("inventory", 0, args -> {
             System.out.println("You inventory consists of:");
-            
-            for(Item i : Player.getInventory()) {
+
+            for(Item i : Player.getInventory())
+            {
                 System.out.println(i.getName() + ", ");
             }
-            
+
             return CommandResult.success(null);
         }));
     }};
@@ -82,7 +82,7 @@ public class CommandHandler
     /**
      * Registers a command with the command handler.
      *
-     * @param cmd Command to register.
+     * @param cmd game.Command to register.
      * @return true if the command was successfully registered, false otherwise.
      */
     public static boolean registerCommand(final Command<?> cmd)
@@ -90,13 +90,6 @@ public class CommandHandler
         return null == CommandHandler.commands.put(cmd.getName(), cmd);
     }
 
-    /**
-     * Calls a command with the given arguments.
-     *
-     * @param cmdName Name of the command to call.
-     * @param args    Arguments to pass to the command.
-     * @return CommandResult object containing the result of the command.
-     */
     public static CommandResult<?> callCommand(final String cmdName, final String[] args)
     {
         if(!CommandHandler.commands.containsKey(cmdName))

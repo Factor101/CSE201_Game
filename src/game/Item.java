@@ -1,3 +1,5 @@
+package game;
+
 /**
  * Class: Intro to Software Engineering
  * @author Stefan Wenzke, Ilhaan Artan, Nathan Anthony, Matthew Heffernan, Brad Martin, Rafael Santell-Colon

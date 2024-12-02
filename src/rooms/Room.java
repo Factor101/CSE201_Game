@@ -1,15 +1,16 @@
-import java.awt.Point;
+package rooms;
+
+import game.Command;
+import game.Item;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Class: Intro to Software Engineering
- * @author Stefan Wenzke, Ilhaan Artan, Nathan Anthony, Matthew Heffernan, Brad Martin, Rafael Santell-Colon
- * @version 1.0
- * Course : CSE 201-C Fall 2024
- * Written: November 3, 2024
- * Purpose: Class to represent a room in the game.
  *
+ * @author Stefan Wenzke, Ilhaan Artan, Nathan Anthony, Matthew Heffernan, Brad Martin, Rafael Santell-Colon
  * @version 1.0
  */
 public class Room
@@ -17,34 +18,42 @@ public class Room
     private final String name; // name of the room
     private final ArrayList<Item> items; // items within the room
     private final String description; // room description
-    private final Point position; // room position as a Point
+    private final int[] position; // room position as a Point
     private final HashMap<String, Command<?>> contextualCommands; // commands unique to this room
 
     /**
-     * Creates a new room
+     * Creates a new room.
      *
      * @param items    list of items in the room
      * @param desc     description of the room
-     * @param p        room's position represented as a Point
+     * @param pt       room's position represented as a point {x, y}
      * @param commands list of commands unique to this room
      */
-    public Room(String name,
-                String desc,
-                Point p,
-                ArrayList<Item> items,
-                HashMap<String, Command<?>> commands)
+    public Room(String name, String desc, int[] pt, ArrayList<Item> items, HashMap<String, Command<?>> commands)
     {
         this.name = name;
         this.items = items;
         this.description = desc;
-        this.position = p;
+        this.position = pt;
         this.contextualCommands = commands;
     }
 
-    public Room(String name,
-                String desc)
+    /**
+     * Creates a new room with a Point instead of int[].
+     *
+     * @param items    list of items in the room
+     * @param desc     description of the room
+     * @param pt       room's position represented as a Point
+     * @param commands list of commands unique to this room
+     */
+    public Room(String name, String desc, Point pt, ArrayList<Item> items, HashMap<String, Command<?>> commands)
     {
-        this(name, desc, new Point(0, 0), new ArrayList<Item>(), new HashMap<>());
+        this(name, desc, new int[]{(int) pt.getX(), (int) pt.getY()}, items, commands);
+    }
+
+    public Room(String name, String desc)
+    {
+        this(name, desc, new int[]{0, 0}, new ArrayList<Item>(), new HashMap<>());
     }
 
     /**
@@ -54,7 +63,7 @@ public class Room
      */
     public String getName()
     {
-        return name;
+        return this.name;
     }
 
     /**
@@ -64,7 +73,7 @@ public class Room
      */
     public ArrayList<Item> getItems()
     {
-        return items;
+        return this.items;
     }
 
     /**
@@ -74,7 +83,7 @@ public class Room
      */
     public String getDescription()
     {
-        return description;
+        return this.description;
     }
 
     /**
@@ -82,9 +91,9 @@ public class Room
      *
      * @return the room's position
      */
-    public Point getPosition()
+    public int[] getPosition()
     {
-        return position;
+        return this.position;
     }
 
     /**
@@ -94,6 +103,6 @@ public class Room
      */
     public HashMap<String, Command<?>> getRoomCommands()
     {
-        return contextualCommands;
+        return this.contextualCommands;
     }
 }

@@ -1,3 +1,7 @@
+package game;
+
+import rooms.Room;
+
 import java.util.ArrayList;
 
 /**

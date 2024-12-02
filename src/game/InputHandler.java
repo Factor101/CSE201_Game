@@ -1,3 +1,7 @@
+package game;
+
+import rooms.Room;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -18,7 +22,7 @@ public class InputHandler
     /**
      * Parses and executes a command.
      *
-     * @param command Command to parse and execute
+     * @param command game.Command to parse and execute
      * @return Result of the command
      */
     public static CommandResult<?> parseAndExecute(final String command)

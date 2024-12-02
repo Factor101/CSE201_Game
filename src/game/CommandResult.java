@@ -1,3 +1,5 @@
+package game;
+
 /**
  * Class: Intro to Software Engineering
  * @author Stefan Wenzke, Ilhaan Artan, Nathan Anthony, Matthew Heffernan, Brad Martin, Rafael Santell-Colon
@@ -39,7 +41,7 @@ public record CommandResult<T>(T result, String message, boolean isSuccess)
     {
         return new CommandResult<T>(result, null, true);
     }
-
+    
     /**
      * Static method to create a successful result with a message.
      *
@@ -76,7 +78,7 @@ public record CommandResult<T>(T result, String message, boolean isSuccess)
     {
         if(!this.isSuccess)
         {
-            throw new IllegalStateException(String.format("Command failed with message: '%s'", this.message));
+            throw new IllegalStateException(String.format("game.Command failed with message: '%s'", this.message));
         }
 
         return this.result;
