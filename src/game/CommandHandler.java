@@ -1,7 +1,5 @@
 package game;
 
-import rooms.Room;
-
 import java.awt.Point;
 import java.util.HashMap;
 
@@ -30,7 +28,7 @@ public class CommandHandler
         }));
 
         // Move command
-        put("go", new Command<Point>("go", 1, args -> {
+        put("go", new Command<int[]>("go", 1, args -> {
             // cardinal directions as vectors
             int[] pt = switch(args[0].toLowerCase())
             {
