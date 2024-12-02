@@ -16,8 +16,8 @@ public class Main
 {
     public static void main(String[] args)
     {
-        // temporary line for demo
-        Player.setCurrentRoom(World.getRooms().get(0).get(1));
+        World.initializeRooms();
+        Player.setPosition(new int[]{ 0, 1 });
 
         // main event loop
         // flag to control the main event loop

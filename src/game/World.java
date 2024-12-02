@@ -2,6 +2,7 @@ package game;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,12 +32,12 @@ public class World
 
     public static void initializeRooms()
     {
-        for(int i = 0; i < MAX_HEIGHT_LENGTH; ++i)
+        for(int i = 0; i < World.MAX_HEIGHT_LENGTH; ++i)
         {
-            World.rooms.add(new ArrayList<Room>(MAX_HEIGHT_LENGTH));
+            World.rooms.add(new ArrayList<Room>(Collections.nCopies(World.MAX_HEIGHT_LENGTH, null)));
         }
 
-        World.addRooms(new Room[] {
+        World.addRooms(new Room[]{
                 new Room("Cyro Pod Room",
                          "The room around you is eerily quiet. A dead alien sits in the opposite side of the room from the broken pod from which you awoke.",
                          new Point(0, 1),
@@ -85,12 +86,13 @@ public class World
                          null),
                 new Room("Yard",
                          "Your spaceship stands there in the middle of the yard.",
-                         new Point(
-                                 3,
-                                 0),
+                         new Point(3, 0),
                          new ArrayList<>(),
                          new HashMap<>(),
-                         null) });
+                         null)
+        });
+
+        System.out.println("Rooms initialized");
     }
 
     public static void initializeDefaultCommands()
@@ -98,28 +100,20 @@ public class World
 
     }
 
-    public static boolean addRooms(Room[] rooms)
+    public static void addRooms(Room[] rooms)
     {
         for(final Room room : rooms)
         {
-            if(World.addRoom(room) == null)
+            if(World.addRoom(room) != null)
             {
-                return false;
+                throw new IllegalArgumentException("Room already exists at position: " + room.getPosition());
             }
         }
-
-        return true;
     }
 
     public static Room addRoom(Room room)
     {
         final int[] pos = room.getPosition();
-        if(World.rooms.get(pos[0])
-                      .get(pos[1]) != null)
-        {
-            return null;
-        }
-
         return World.rooms.get(pos[0])
                           .set(pos[1], room);
     }
@@ -138,10 +132,5 @@ public class World
     public static ArrayList<ArrayList<Room>> getRooms()
     {
         return World.rooms;
-    }
-
-    public static Room getRoom(int[] point)
-    {
-        return null;
     }
 }

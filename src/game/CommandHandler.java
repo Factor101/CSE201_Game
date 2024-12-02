@@ -48,22 +48,19 @@ public class CommandHandler
             pt[0] += curPt[0];
             pt[1] += curPt[1];
 
-            final Room room = World.getRoom(pt);
+            final Room room = World.getRoomAt(pt);
             if(room == null)
             {
                 return CommandResult.fail("You can't go that way.");
             }
 
             // check entry conditions
-            if(room.checkEntry())
+            if(!room.checkEntry())
             {
-
+                return CommandResult.fail("You can't enter this room.");
             }
 
             Player.setPosition(pt);
-            Player.setCurrentRoom(room);
-
-
 
             return CommandResult.success(pt, "You ventured " + args[0]);
         }));

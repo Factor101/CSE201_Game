@@ -64,10 +64,12 @@ public abstract class Player
     {
         return Player.position;
     }
+
     public static void setPosition(int[] pt)
     {
         Player.position[0] = pt[0];
         Player.position[1] = pt[1];
+        Player.setCurrentRoom(World.getRoomAt(pt));
     }
 
     public static ArrayList<Item> getInventory()
@@ -84,5 +86,4 @@ public abstract class Player
     {
         Player.currentRoom = room;
     }
-
 }
