@@ -175,11 +175,11 @@ public class World
                                new ArrayList<Item>(),
                                new ArrayList<RoomFeature>()
                                {{
-                                   add(new RoomFeature("Broken Pipe", "A broken pipe desc//TODO", new ArrayList<Command<?>>()
+                                   add(new RoomFeature("SpaceShip", "A spaceships sits in the middle of the yard", new ArrayList<Command<?>>()
                                    {{
-                                       add(new Command<Void>("pipe", args -> {
+                                       add(new Command<Void>("SpaceShip", args -> {
                                            return CommandResult.success(null,
-                                                                        "You examine the broken pipe closely." + "It appears to have been damaged recently," + "with strange claw marks around the edges. " + "The pipe seems to have once carried some kind of " + "coolant for the genetic testing equipment.");
+                                                                        "As you walk outside you see the door to the spaceship open and it feels like there is only one thing left to do. Get off of this planet");
                                        }));
                                    }}));
                                }},
@@ -196,7 +196,7 @@ public class World
                                    {{
                                        add(new Command<Void>("markings", args -> {
                                            return CommandResult.success(null,
-                                                                        "As you look onto the wall you can tell these are safety instructions for the genetic testing room. It seems as if there is a color code to the animals which should give you access to the computer terminal in that room. However, the names needed to complete the code are not here. Code below.");
+                                                                        "As you look onto the wall you can tell these are safety instructions for the genetic testing room. It seems as if there is a color code to the animals which should give you access to the computer terminal in that room. However, the names needed to complete the code are not here. Code below. Bright Orange animal name, characters “1,3,4”. Red animal name, characters “5,6,4”. Blue animal name, Characters “3,4,2” and finally green animal name, characters “6,7,7”. Password should be these characters concatenated together.");
                                        }));
                                    }}));
 
