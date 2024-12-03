@@ -63,6 +63,31 @@ public class World
                                            }));
                                        }
                                    }));
+
+                                   add(new RoomFeature("Vault", "looks as if it requires a code", new ArrayList<Command<?>>()
+                                   {
+                                       {
+                                           add(new Command<Void>("Vault", 0,  args -> {
+                                                if(Player.hasItem("Tranq Gun"))
+                                                {
+                                                return CommandResult.success(null, "There's nothing more to do here.");
+                                                }
+
+                                                final String pass = InputHandler.promptInput("You walk over to the computer terminal and see" + "'PASSWORD: ' with a blinking cursor.");
+                                               if(pass.equals("18-36-86")) 
+                                               {
+                                                   Player.addItem(new Item("Tranq Gun", "Used to enter the Genetic Testing room")); 
+                                                   Player.addItem(new Item("Clowth Gas", "This gas has the ability to heal genes at the cellular level")); 
+                                                   return CommandResult.success(null, "The vault slides open and inside you grab a tranq gun and a cannister of clowth gas");
+
+                                               }
+                                               else
+                                               {
+                                                   return CommandResult.fail("The vault makes a hollow lock sound and it seems as if the code you put in was incorrect");
+                                               }
+                                           }));
+                                       }
+                                   }));
                                }},
                                new HashMap<>(Collections.emptyMap()),
                                null));
