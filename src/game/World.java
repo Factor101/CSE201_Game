@@ -192,13 +192,24 @@ public class World
                                new ArrayList<Item>(),
                                new ArrayList<RoomFeature>()
                                {{
-                                   add(new RoomFeature("Broken Pipe", "A broken pipe desc//TODO", new ArrayList<Command<?>>()
+                                   add(new RoomFeature("Markings on the wall", "It looks as if the markings are some type of color code", new ArrayList<Command<?>>()
                                    {{
-                                       add(new Command<Void>("pipe", args -> {
+                                       add(new Command<Void>("markings", args -> {
                                            return CommandResult.success(null,
-                                                                        "You examine the broken pipe closely." + "It appears to have been damaged recently," + "with strange claw marks around the edges. " + "The pipe seems to have once carried some kind of " + "coolant for the genetic testing equipment.");
+                                                                        "As you look onto the wall you can tell these are safety instructions for the genetic testing room. It seems as if there is a color code to the animals which should give you access to the computer terminal in that room. However, the names needed to complete the code are not here. Code below.");
                                        }));
                                    }}));
+
+                                   add(new RoomFeature("Picture", "A pre-virus picture of mars is hanging on the wall", new ArrayList<Command<?>>()
+                                   {
+                                       {
+                                           add(new Command<Void>("picture", args -> {
+                                               return CommandResult.success(null,
+                                               "This picture is of the planet before the plague. There are advanced cities, flying cars, and what looks to be a second picture of a happy family. Now the only thing on the surface seems to be rubble."
+                                               );
+                                           }));
+                                       }
+                                   }));
                                }},
                                new HashMap<>(Collections.emptyMap()),
                                null));
