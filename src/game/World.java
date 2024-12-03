@@ -200,17 +200,22 @@ public class World
                                new HashMap<>(Collections.emptyMap()),
                                null));
 
-        World.addRoom(new Room("Cryo pod Room",
+        World.addRoom(new Room("Cryo Pod Room",
                                "As you awake from what feels like an extremely long slumber you see a door to the east of you and an alien laying on the ground",
                                new int[]{ 0, 1 },
                                new ArrayList<Item>(),
                                new ArrayList<RoomFeature>()
                                {{
-                                   add(new RoomFeature("Broken Pipe", "A broken pipe desc//TODO", new ArrayList<Command<?>>()
+                                   add(new RoomFeature("Alien", "You see a monster laying across the floor from you. It seems to be Dr. Grobu.", new ArrayList<Command<?>>()
                                    {{
-                                       add(new Command<Void>("pipe", args -> {
+                                       add(new Command<Void>("alien", args -> {
+                                    	   if(Player.hasItem("Keycard"))
+                                           {
+                                               return CommandResult.success(null, "There's nothing more to do here.\n");
+                                           }
+                                    	   Player.getInventory().add(new Item("Keycard", "This keycard is the personal property of Dr. Grobu, resident and chief of the transient research facility."));
                                            return CommandResult.success(null,
-                                                                        "You examine the broken pipe closely." + "It appears to have been damaged recently," + "with strange claw marks around the edges. " + "The pipe seems to have once carried some kind of " + "coolant for the genetic testing equipment.");
+                                                                        "You examine Dr.Grobu closely. He appears to have gone through some freak transformation. You see the keycard that is dangling from his chest.\\n");
                                        }));
                                    }}));
                                }},
