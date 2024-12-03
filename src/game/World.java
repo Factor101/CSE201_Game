@@ -184,6 +184,7 @@ public class World
                                            }
                                     	   Player.getInventory().add(new Item("Gas Mask", "Needed to be able to enter the gas bottling room. Something seems to be broken."));
                                     	   Player.getInventory().add(new Item("Letter", "Welcome to the Transient research facility. I wrote this letter before clicking the time release button on your stasis pod. This horrible disease has mutated me into what I am today and destroyed our planet. I have done all of the work for you to synthesize a cure. First in the gas bottling room vault you have to get (clowth gas), then in the genetic testing room you have to get the fur of a bright orange monster. Finally you will have to mix both ingredients in our mixing room. Synthesize a cure and save the planet. -Dr. Grobu"));
+
                                            return CommandResult.success(null,
                                                                         "You see an open compartment at the bottom of the desk with a gas mask inside. A letter is sitting on the desk as well. Gas mask and letter added to inventory.\n");
                                        }));
@@ -198,7 +199,7 @@ public class World
                                    }}));
                                }},
                                new HashMap<>(Collections.emptyMap()),
-                               () -> {
+                               (args) -> {
                                    final Item keycard = Player.getItem("Keycard");
                                    if(keycard != null)
                                    {
