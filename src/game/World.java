@@ -223,11 +223,60 @@ public class World
                                new ArrayList<Item>(),
                                new ArrayList<RoomFeature>()
                                {{
-                                   add(new RoomFeature("Broken Pipe", "A broken pipe desc//TODO", new ArrayList<Command<?>>()
+                                   add(new RoomFeature("Tube-1", "A large tube.", new ArrayList<Command<?>>()
                                    {{
-                                       add(new Command<Void>("pipe", args -> {
+                                       add(new Command<Void>("tube-1", args -> {
+                                    	   if(!Player.hasItem("Clowth Gas"))
+                                           {
+                                               return CommandResult.success(null, "There's nothing more to do here.\n");
+                                           }
+                                    	   for (int i = 0; i < Player.getInventory().size(); i++) {
+                                    		   if (Player.getInventory().get(i).getName().equals("Clowth Gas")) {
+                                    			   Player.getInventory().remove(i);
+                                    		   }
+                                    	   }
                                            return CommandResult.success(null,
-                                                                        "You examine the broken pipe closely." + "It appears to have been damaged recently," + "with strange claw marks around the edges. " + "The pipe seems to have once carried some kind of " + "coolant for the genetic testing equipment.");
+                                                                        "You drop the clowth gas into the tube and close the hermetic seal.\n");
+                                       }));
+                                   }}));
+                                   
+                                   add(new RoomFeature("Tube-2", "A large tube.", new ArrayList<Command<?>>()
+                                   {{
+                                       add(new Command<Void>("tube-2", args -> {
+                                    	   if(!Player.hasItem("Mirequills Fur"))
+                                           {
+                                               return CommandResult.success(null, "There's nothing more to do here.\n");
+                                           }
+                                    	   for (int i = 0; i < Player.getInventory().size(); i++) {
+                                    		   if (Player.getInventory().get(i).getName().equals("Mirequills Fur")) {
+                                    			   Player.getInventory().remove(i);
+                                    		   }
+                                    	   }
+                                           return CommandResult.success(null,
+                                                                        "You drop the Mirequills fur into the tube and close the hermetic seal.\n");
+                                       }));
+                                   }}));
+                                   
+                                   add(new RoomFeature("Machine", "A large machine used to make the vaccine.", new ArrayList<Command<?>>()
+                                   {{
+                                       add(new Command<Void>("machine", args -> {
+                                    	   if(!Player.hasItem("Mirequills Fur") && !Player.hasItem("Clowth Gas"))
+                                           {
+                                               return CommandResult.success(null, "You must deposit the needed items in the tubes.\n");
+                                           }
+                                    	   final String pass = InputHandler.promptInput("You walk over to the machine and see 'PASSWORD: ' with a blinking cursor.");
+                                           if(pass.equals("GROBU"))
+                                           {
+                                               Player.addItem(new Item("Cure", "You were able to synthesize hope. Inject this cure and leave this place.")); //TODO: PLACEHOLDER
+                                               return CommandResult.success(null, "Password successful. You were able to synthesize hope. Inject this cure and leave this place.\n");
+                                           }
+                                           else
+                                           {
+                                               return CommandResult.fail("The screen flashes red for a moment, filling the " +
+                                                                         "room with a loud beep. 'INCORRECT' is displayed for a " +
+                                                                         "moment, before the screen resets to allow you to try " +
+                                                                         "again.\n");
+                                           }
                                        }));
                                    }}));
                                }},
