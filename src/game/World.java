@@ -1,10 +1,8 @@
 package game;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Class: Intro to Software Engineering
@@ -90,7 +88,7 @@ public class World
                                    }));
                                }},
                                new HashMap<>(Collections.emptyMap()),
-                               (_) -> {
+                               (args) -> {
                                    final Item gasMask = Player.getItem("Gas Mask");
                                    if(gasMask != null)
                                    {
@@ -179,7 +177,7 @@ public class World
                                    }));
                                }},
                                new HashMap<>(Collections.emptyMap()),
-                               (_) -> {
+                               (args) -> {
                                 final Item TranqGun= Player.getItem("Tranq Gun");
                                 if(TranqGun != null)
                                 {
@@ -223,7 +221,7 @@ public class World
                                    }}));
                                }},
                                new HashMap<>(Collections.emptyMap()),
-                               (_) -> {
+                               (args) -> {
                                    final Item keycard = Player.getItem("Keycard");
                                    if(keycard != null)
                                    {
@@ -324,7 +322,7 @@ public class World
                                    }}));
                                }},
                                new HashMap<>(Collections.emptyMap()),
-                               (_) -> {
+                               (args) -> {
                                    final Item fur = Player.getItem("Mirequills Fur");
                                    final Item gas = Player.getItem("Clowth Gas");
                                    if(fur != null && gas != null)
@@ -408,7 +406,7 @@ public class World
                                    }}));
                                }},
                                new HashMap<>(Collections.emptyMap()),
-                               (_) -> {
+                               (args) -> {
                                 final Item Cure = Player.getItem("Cure");
                                 if(Cure != null)
                                 {
