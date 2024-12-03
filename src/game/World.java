@@ -144,7 +144,7 @@ public class World
                                    {
                                        {
                                            add(new Command<Void>("animal", args -> {
-                                               if(Player.hasItem("ANIMAL_NAME Fur")) //TODO: PLACEHOLDER
+                                               if(Player.hasItem("Mirequills Fur")) 
                                                {
                                                     return CommandResult.success(null, "There's no more fur to shear.");
                                                }
@@ -152,15 +152,16 @@ public class World
                                                if(Player.hasItem("Shears"))
                                                {
                                                    System.out.println("TODO FINISH THIS You sheared the animal fur ");
-                                                   Player.addItem(new Item("ANIMAL_NAME Fur", "somedesc"));  //TODO: PLACEHOLDER
-                                                   return CommandResult.success("YOU DID SOME SHIT HELL YEAH BROTHER");
+                                                   Player.addItem(new Item("Mirequills Fur",  "The bright orange fur glows as you stare at it. The result of multiple rounds of radiation testing and gene editing.\r\n"
+                                                                                                              ));  
+                                                   return CommandResult.success("You cut the fur off the animal succesfully and your now ready to go to the final mixing room");
                                                }
                                                else
                                                {
-                                                   return CommandResult.success("The coat of the dead ANIMAL_NAME could be " +
+                                                   return CommandResult.success("The coat of the dead Mirequills could be " +
                                                                                 "useful. You should look for something to cut " +
-                                                                                "it off.");              //TODO: PLACEHOLDER
-                                               }
+                                                                                "it off.");              
+                                                 }
                                            }));
                                        }
                                    }));
