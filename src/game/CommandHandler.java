@@ -103,12 +103,7 @@ public class CommandHandler
         // Inventory game.Command
         put("inventory", new Command<Void>("inventory", 0, args -> {
             System.out.println("You inventory consists of:");
-
-            for(Item i : Player.getInventory())
-            {
-                System.out.println(i.getName() + ", ");
-            }
-
+            Player.getInventory().forEach(e -> System.out.println("\t" + e.getName()));
             return CommandResult.success(null);
         }));
     }};
