@@ -167,7 +167,19 @@ public class World
                                    }));
                                }},
                                new HashMap<>(Collections.emptyMap()),
-                               null));
+                               (_) -> {
+                                final Item TranqGun= Player.getItem("Tranq Gun");
+                                if(TranqGun != null)
+                                {
+                                    System.out.println("The door flies up and you go into the Genetic Testing room");
+                                    return true;
+                                }
+                                else
+                                {
+                                    System.out.println("Door requires emergency supplies in case of a rogue animal");
+                                    return false;
+                                }
+                            }));
 
         World.addRoom(new Room("Lab room",
                                "As you look around you see three doors, one to the north, east, and south of the lab room. It appears as if the door to the north leads to a gas bottling room. The door to the south seems to lead to a genetic testing room and the door to the east of you looks to lead to a long corridor. Although both the gas bottling door and genetics testing door are locked the hallway door to the east of you appears to be slightly ajar. You also see a large lab desk with drawings all over, and a poster.",
@@ -317,7 +329,19 @@ public class World
                                    }}));
                                }},
                                new HashMap<>(Collections.emptyMap()),
-                               null));
+                               (_) -> {
+                                final Item Cure = Player.getItem("Cure");
+                                if(Cure != null)
+                                {
+                                    System.out.println("The door slides up and the rocketship waits for you.");
+                                    return true;
+                                }
+                                else
+                                {
+                                    System.out.println("Need cure to be able to exit the facility.");
+                                    return false;
+                                }
+                            }));
 
         World.addRoom(new Room("Hallway Room",
                                "As you go through the door, it looks as if it is just a desolate hallway. There seems to be some marking on the wall to your left, and a picture on the wall to your right. You can also see another door ahead of you which looks heavily fortified. \r\n",
