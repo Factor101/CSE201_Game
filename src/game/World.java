@@ -140,6 +140,10 @@ public class World
                                    add(new RoomFeature("Desk", "A desk in the corner of the lab.", new ArrayList<Command<?>>()
                                    {{
                                        add(new Command<Void>("desk", args -> {
+                                           if(Player.hasItem("Gas Mask"))
+                                           {
+                                               return CommandResult.success(null, "There's nothing more to do here.\n");
+                                           }
                                     	   Player.getInventory().add(new Item("Gas Mask", "Needed to be able to enter the gas bottling room. Something seems to be broken."));
                                     	   Player.getInventory().add(new Item("Letter", "Welcome to the Transient research facility. I wrote this letter before clicking the time release button on your stasis pod. This horrible disease has mutated me into what I am today and destroyed our planet. I have done all of the work for you to synthesize a cure. First in the gas bottling room vault you have to get (clowth gas), then in the genetic testing room you have to get the fur of a bright orange monster. Finally you will have to mix both ingredients in our mixing room. Synthesize a cure and save the planet. -Dr. Grobu"));
                                            return CommandResult.success(null,
