@@ -19,8 +19,10 @@ public class CommandHandler
     {{
         // Help command
         put("help", new Command<Void>("help", 0, args -> {
-            System.out.println("Commands:");
+            System.out.println("Global commands:");
             CommandHandler.commands.forEach((k, v) -> System.out.println(k));
+            System.out.println("Contextual commands:");
+            Player.getCurrentRoom().getRoomCommands().forEach((k, v) -> System.out.println(k));
             System.out.println();
 
             return CommandResult.success(null);

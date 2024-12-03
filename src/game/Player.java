@@ -60,7 +60,7 @@ public abstract class Player
     /**
      * Method to determine if the player has a given item.
      *
-     * @param item - The item to get.
+     * @param name - The item to get.
      *
      * @return The item if the player has the item, null otherwise.
      */
