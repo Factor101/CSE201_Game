@@ -1,8 +1,6 @@
 package game;
 
-import java.awt.Point;
 import java.util.HashMap;
-
 
 /**
  * Class: Intro to Software Engineering
@@ -24,6 +22,7 @@ public class CommandHandler
             System.out.println("Commands:");
             CommandHandler.commands.forEach((k, v) -> System.out.println(k));
             System.out.println();
+
             return CommandResult.success(null);
         }));
 
@@ -81,11 +80,19 @@ public class CommandHandler
 
         // Investigate command
         put("investigate", new Command<Void>("investigate", 0, args -> {
-            final Room room = Player.getCurrentRoom();
             System.out.println("You looked around. A few things caught your eye:");
+            final Room room = Player.getCurrentRoom();
             for(RoomFeature e : room.getFeatures())
             {
+                // print feature name and description
                 System.out.printf("\t%s: %s%n", e.getName(), e.getDescription());
+
+                // populate contextual commands of Room, only once
+                if(!e.isInteracted)
+                {
+                    e.isInteracted = true;
+                    e.getCommands().forEach(cmd -> room.addCommand(cmd.getName(), cmd));
+                }
             }
 
             return CommandResult.success(null);
@@ -134,12 +141,18 @@ public class CommandHandler
 
     public static CommandResult<?> callCommand(final String cmdName, final String[] args)
     {
-        if(!CommandHandler.commands.containsKey(cmdName))
+        // check if command exists in default or contextual commands
+        Command<?> cmd = CommandHandler.commands.get(cmdName);
+        if(cmd == null)
+        {
+            cmd = Player.getCurrentRoom().getRoomCommands().get(cmdName);
+        }
+
+        if(cmd == null)
         {
             return CommandResult.fail(cmdName + " means nothing here.");
         }
 
-        return CommandHandler.commands.get(cmdName)
-                                      .exec(args);
+        return cmd.exec(args);
     }
 }

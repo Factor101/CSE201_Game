@@ -108,11 +108,27 @@ public class World
                                new ArrayList<Item>(),
                                new ArrayList<RoomFeature>()
                                {{
-                                   add(new RoomFeature("Broken Pipe", "A broken pipe desc//TODO", new ArrayList<Command<?>>()
+                                   add(new RoomFeature("Desk", "A desk in the corner of the lab.", new ArrayList<Command<?>>()
                                    {{
-                                       add(new Command<Void>("pipe", args -> {
+                                       add(new Command<Void>("desk", args -> {
                                            return CommandResult.success(null,
-                                                                        "You examine the broken pipe closely." + "It appears to have been damaged recently," + "with strange claw marks around the edges. " + "The pipe seems to have once carried some kind of " + "coolant for the genetic testing equipment.");
+                                                                        "You see an open compartment at the bottom of the desk and a letter sitting on the desk.");
+                                       }));
+                                   }}));
+                                   
+                                   add(new RoomFeature("Letter", "A letter sitting on top of the desk.", new ArrayList<Command<?>>()
+                                   {{
+                                       add(new Command<Void>("letter", args -> {
+                                           return CommandResult.success(null,
+                                                                        "Welcome to the Transient research facility. I wrote this letter before clicking the time release button on your stasis pod. This horrible disease has mutated me into what I am today and destroyed our planet. I have done all of the work for you to synthesize a cure. First in the gas bottling room vault you have to get (clowth gas), then in the genetic testing room you have to get the fur of a bright orange monster. Finally you will have to mix both ingredients in our mixing room. Synthesize a cure and save the planet. -Dr. Grobu");
+                                       }));
+                                   }}));
+                                   
+                                   add(new RoomFeature("Map", "A map on the wall.", new ArrayList<Command<?>>()
+                                   {{
+                                       add(new Command<Void>("map", args -> {
+                                           return CommandResult.success(null,
+                                                                        "It looks as if this is a map of the pre-virus planet. Apparently, it goes by the name of Mars.");
                                        }));
                                    }}));
                                }},
