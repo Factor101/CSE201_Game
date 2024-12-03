@@ -152,7 +152,7 @@ public class World
                                            }));
                                    }}));
 
-                                   add(new RoomFeature("Animal on the floor", "", new ArrayList<Command<?>>()
+                                   add(new RoomFeature("Animal on the floor", "Looks like an animal is laying on the ground.", new ArrayList<Command<?>>()
                                    {
                                        {
                                            add(new Command<Void>("animal", args -> {
