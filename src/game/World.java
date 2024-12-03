@@ -308,11 +308,65 @@ public class World
                                new ArrayList<Item>(),
                                new ArrayList<RoomFeature>()
                                {{
-                                   add(new RoomFeature("SpaceShip", "A spaceships sits in the middle of the yard", new ArrayList<Command<?>>()
+                                   add(new RoomFeature("Spaceship", "A spaceships sits in the middle of the yard",
+                                                       new ArrayList<Command<?>>()
                                    {{
-                                       add(new Command<Void>("SpaceShip", args -> {
-                                           return CommandResult.success(null,
-                                                                        "As you walk outside you see the door to the spaceship open and it feels like there is only one thing left to do. Get off of this planet");
+                                       add(new Command<Void>("spaceship", args -> {
+                                           System.out.println("The door to the spaceship opens as you approach. As you enter, " +
+                                                              "you see the control panel light up. Pressing launch, you hear " +
+                                                              "the engines roar to life. The spaceship lifts off the ground, " +
+                                                              "finally delivering from this strange prison, to the even " +
+                                                              "stranger stars above.\n");
+                                           System.out.println(
+                                                   """
+                                                   
+                                                   
+                                                                       /\\
+                                                                      //\\\\
+                                                                     ||##||
+                                                                    //##mm\\\\
+                                                                   //##*mmm\\\\
+                                                                  //###**mmm\\\\
+                                                                 //###***nmmm\\\\
+                                                                //####***@nmmm\\\\
+                                                                ||####***@nnmm||
+                                                                ||####**@@@nnm||        "Mars Escape"
+                                                                |______________|        by Ilhaan Artan,
+                                                                |              |           Stefan Wenzke, ,,\s
+                                                                 \\____________/           Nathan Anthony,
+                                                                  |          |             Matthew Heffernan
+                                                                 /|    /\\    |\\          Brad Martin
+                                                                /_|    || /\\ |_\\         Rafael Santell-Colon
+                                                                  |           |
+                                                                  |       \\/ |
+                                                                  |          |
+                                                                 /|    /\\    |\\
+                                                                / |    ||    | \\
+                                                               /  |    ||    |  \\
+                                                              /  /\\    ||    /\\  \\
+                                                             |__/  \\   ||   /  \\__|
+                                                               /____\\      /____\\
+                                                               |    |      |    |
+                                                               |    |______|    |
+                                                               |    | /--\\ |    |
+                                                               |____|/----\\|____|
+                                                                \\||/ //##\\\\ \\||/
+                                                                /##\\//####\\\\/##\\
+                                                               //##\\\\/####\\//##\\\\
+                                                              ||/::\\||/##\\||/::\\||
+                                                              \\\\\\''///:**:\\\\\\''///
+                                                               \\\\\\///\\::::/\\\\\\///
+                                                                \\\\//\\\\\\::///\\\\//
+                                                                 \\/\\\\\\\\..////\\/
+                                                                    \\\\\\\\////
+                                                                     \\\\\\///
+                                                                      \\\\//
+                                                                       \\/
+                                                   """);
+
+
+                                           System.exit(0);
+                                           return CommandResult.success(null);
                                        }));
                                    }}));
                                }},
