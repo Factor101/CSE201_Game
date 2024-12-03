@@ -95,9 +95,9 @@ public class World
                                                }
 
                                                final String pass = InputHandler.promptInput("You walk over to the computer terminal and see" + "'PASSWORD: ' with a blinking cursor.");
-                                               if(pass.equals("password")) //TODO: PLACEHOLDER PASSWORD
+                                               if(pass.equals("MREYRHMIUWAA")) 
                                                {
-                                                   Player.addItem(new Item("Shears", "A pair of shears")); //TODO: PLACEHOLDER
+                                                   Player.addItem(new Item("Shears", "A pair of shears strong enough to cut through fur")); 
                                                    return CommandResult.success(null, "The screen flashes green for a moment, " +
                                                                                       "before going black. You hear a soft " +
                                                                                       "click, and the computer screen unlatches" +
@@ -144,7 +144,7 @@ public class World
                                null));
 
         World.addRoom(new Room("Lab room",
-                               "As you look around you see three doors, one to the north, east and one to the south of the lab room. It appears as if the door to the north leads to a gas bottling room. The door to the south seems to lead to a genetic testing room and the door to the east of you looks to lead to a long corridor. Although both the gas bottling door and genetics testing door are locked the hallway door to the east of you appears to be slightly ajar. You also see a large lab desk with drawings all over, and a poster",
+                               "As you look around you see three doors, one to the north, east, and south of the lab room. It appears as if the door to the north leads to a gas bottling room. The door to the south seems to lead to a genetic testing room and the door to the east of you looks to lead to a long corridor. Although both the gas bottling door and genetics testing door are locked the hallway door to the east of you appears to be slightly ajar. You also see a large lab desk with drawings all over, and a poster.",
                                new int[]{ 1, 1 },
                                new ArrayList<Item>(),
                                new ArrayList<RoomFeature>()
@@ -152,24 +152,22 @@ public class World
                                    add(new RoomFeature("Desk", "A desk in the corner of the lab.", new ArrayList<Command<?>>()
                                    {{
                                        add(new Command<Void>("desk", args -> {
+                                           if(Player.hasItem("Gas Mask"))
+                                           {
+                                               return CommandResult.success(null, "There's nothing more to do here.\n");
+                                           }
+                                    	   Player.getInventory().add(new Item("Gas Mask", "Needed to be able to enter the gas bottling room. Something seems to be broken."));
+                                    	   Player.getInventory().add(new Item("Letter", "Welcome to the Transient research facility. I wrote this letter before clicking the time release button on your stasis pod. This horrible disease has mutated me into what I am today and destroyed our planet. I have done all of the work for you to synthesize a cure. First in the gas bottling room vault you have to get (clowth gas), then in the genetic testing room you have to get the fur of a bright orange monster. Finally you will have to mix both ingredients in our mixing room. Synthesize a cure and save the planet. -Dr. Grobu"));
                                            return CommandResult.success(null,
-                                                                        "You see an open compartment at the bottom of the desk and a letter sitting on the desk.");
+                                                                        "You see an open compartment at the bottom of the desk with a gas mask inside. A letter is sitting on the desk as well. Gas mask and letter added to inventory.\n");
                                        }));
                                    }}));
-
-                                   add(new RoomFeature("Letter", "A letter sitting on top of the desk.", new ArrayList<Command<?>>()
-                                   {{
-                                       add(new Command<Void>("letter", args -> {
-                                           return CommandResult.success(null,
-                                                                        "Welcome to the Transient research facility. I wrote this letter before clicking the time release button on your stasis pod. This horrible disease has mutated me into what I am today and destroyed our planet. I have done all of the work for you to synthesize a cure. First in the gas bottling room vault you have to get (clowth gas), then in the genetic testing room you have to get the fur of a bright orange monster. Finally you will have to mix both ingredients in our mixing room. Synthesize a cure and save the planet. -Dr. Grobu");
-                                       }));
-                                   }}));
-
+                                      
                                    add(new RoomFeature("Map", "A map on the wall.", new ArrayList<Command<?>>()
                                    {{
                                        add(new Command<Void>("map", args -> {
                                            return CommandResult.success(null,
-                                                                        "It looks as if this is a map of the pre-virus planet. Apparently, it goes by the name of Mars.");
+                                                                        "It looks as if this is a map of the pre-virus planet. Apparently, it goes by the name of Mars.\n");
                                        }));
                                    }}));
                                }},
