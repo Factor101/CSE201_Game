@@ -75,16 +75,33 @@ public class World
                                    }));
 
                                    add(new RoomFeature("Computer terminal", "A terminal on the back wall of the room", new ArrayList<Command<?>>()
-                                   {
-                                       {
-                                           add(new Command<Void>("Computer", 1, args -> {
+                                   {{
+                                           add(new Command<Void>("computer", 0, args -> {
+                                               if(Player.hasItem("Shears"))
+                                               {
+                                                   return CommandResult.success(null, "There's nothing more to do here.");
+                                               }
 
-                                               return CommandResult.success(null,
-                                               "As you look at the two cages on your right you can make out name tags on the cages. On top of the cage with the red animal inside you can see a nametage “Zephyrhound”. "
-                                               );
+                                               final String pass = InputHandler.promptInput("You walk over to the computer terminal and see" + "'PASSWORD: ' with a blinking cursor.");
+                                               if(pass.equals("password")) //TODO: PLACEHOLDER PASSWORD
+                                               {
+                                                   Player.addItem(new Item("Shears", "A pair of shears")); //TODO: PLACEHOLDER
+                                                   return CommandResult.success(null, "The screen flashes green for a moment, " +
+                                                                                      "before going black. You hear a soft " +
+                                                                                      "click, and the computer screen unlatches" +
+                                                                                      " to reveal a hidden compartment. Inside," +
+                                                                                      " you find a pair of shears.");
+
+                                               }
+                                               else
+                                               {
+                                                   return CommandResult.fail("The screen flashes red for a moment, filling the " +
+                                                                             "room with a loud beep. 'INCORRECT' is displayed for a " +
+                                                                             "moment, before the screen resets to allow you to try " +
+                                                                             "again.");
+                                               }
                                            }));
-                                       }
-                                   }));
+                                   }}));
 
                                    add(new RoomFeature("Animal on the floor", "", new ArrayList<Command<?>>()
                                    {
