@@ -16,9 +16,6 @@ public abstract class Player
     // The current room the player is in.
     private static Room currentRoom = null;
 
-    // The limit of items a player can hold.
-    private static final int inventoryLimit = 5;
-
     // Position of player
     private static final int[] position = new int[]{ 0, 0 };
 
@@ -31,12 +28,7 @@ public abstract class Player
      */
     public static boolean addItem(Item item)
     {
-        if(Player.inventory.size() < Player.inventoryLimit)
-        {
-            return Player.inventory.add(item);
-        }
-
-        return false;
+        return Player.inventory.add(item);
     }
 
     public static boolean hasItem(String itemName)
