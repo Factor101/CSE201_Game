@@ -90,7 +90,19 @@ public class World
                                    }));
                                }},
                                new HashMap<>(Collections.emptyMap()),
-                               null));
+                               (_) -> {
+                                   final Item gasMask = Player.getItem("Gas Mask");
+                                   if(gasMask != null)
+                                   {
+                                       System.out.println("You put on the gas mask and enter the room.\n");
+                                       return true;
+                                   }
+                                   else
+                                   {
+                                       System.out.println("You need a gas mask to safely enter this room.\n");
+                                       return false;
+                                   }
+                               }));
 
         World.addRoom(new Room("Genetic Testing Room",
                                "As you walk in you see a large animal on the ground in front of you glowing bright orange. To your right you see 2 cages. One with a red animal, and another one with a blue animal. To your left you see 2 cages, one with a green animal and the other one busted open. On the back of the wall you see a poster of a greenhouse and a computer terminal.\r\n",
@@ -312,7 +324,20 @@ public class World
                                    }}));
                                }},
                                new HashMap<>(Collections.emptyMap()),
-                               null));
+                               (_) -> {
+                                   final Item fur = Player.getItem("Mirequills Fur");
+                                   final Item gas = Player.getItem("Clowth Gas");
+                                   if(fur != null && gas != null)
+                                   {
+                                       System.out.println("You were able to successfully enter the room.\n");
+                                       return true;
+                                   }
+                                   else
+                                   {
+                                       System.out.println("You need the Mirequills Fur and Clowth Gas to enter the room.\n");
+                                       return false;
+                                   }
+                               }));
 
         World.addRoom(new Room("Yard",
                                "As you walk outside you see the door to the spaceship open and it feels like there is only one thing left to do. Get off of this planet.",
