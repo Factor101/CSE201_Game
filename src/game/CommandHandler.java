@@ -64,6 +64,21 @@ public class CommandHandler
             return CommandResult.success(pt, "You ventured " + args[0]);
         }));
 
+        // Quit command
+        put("quit", new Command<Void>("quit", 0, args -> {
+        	System.out.println("Quitting game...");
+
+        	System.exit(0);
+
+        	return CommandResult.success(null);
+        }));
+
+        // Yell command
+        put("yell", new Command<Void>("yell", 0, args -> {
+        	System.out.println("You yell for help...\nYou hear nothing in response. You must help yourself.");
+        	return CommandResult.success(null);
+        }));
+
         // Investigate command
         put("investigate", new Command<Void>("investigate", 1, args -> {
             final Room room = Player.getCurrentRoom();
