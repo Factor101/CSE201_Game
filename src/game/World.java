@@ -44,13 +44,25 @@ public class World
                                new ArrayList<Item>(),
                                new ArrayList<RoomFeature>()
                                {{
-                                   add(new RoomFeature("Broken Pipe", "A broken pipe desc//TODO", new ArrayList<Command<?>>()
+                                   add(new RoomFeature("Broken Pipe", "On the left wall of the room a pipe appears to be busted open", new ArrayList<Command<?>>()
                                    {{
                                        add(new Command<Void>("pipe", args -> {
                                            return CommandResult.success(null,
-                                                                        "You examine the broken pipe closely." + "It appears to have been damaged recently," + "with strange claw marks around the edges. " + "The pipe seems to have once carried some kind of " + "coolant for the genetic testing equipment.");
+                                                                        "As soon as you walk in it looks as if smoke has filled up the entire room. Through the gas mask you spot a broken pipe to your right, a vault to your left, and a large chemistry desk in front of you with a poster of the periodic table.\r\n" + //
+                                                                                                                                                        "");
                                        }));
                                    }}));
+
+                                   add(new RoomFeature("Periodic table Poster", "it looks as if the Periodic table poster has been marked up with some drawings", new ArrayList<Command<?>>()
+                                   {
+                                       {
+                                           add(new Command<Void>("PeriodicTable", args -> {
+                                               return CommandResult.success(null,
+                                               "You notice something a little strange as soon as your eyes meet the color of the periodic table poster. The atomic numbers of each element are circled and an arrow is pointing from top to bottom. Over the noble gasses.\r\n"                                                
+                                               );
+                                           }));
+                                       }
+                                   }));
                                }},
                                new HashMap<>(Collections.emptyMap()),
                                null));
