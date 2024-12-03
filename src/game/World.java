@@ -95,9 +95,9 @@ public class World
                                                }
 
                                                final String pass = InputHandler.promptInput("You walk over to the computer terminal and see" + "'PASSWORD: ' with a blinking cursor.");
-                                               if(pass.equals("password")) //TODO: PLACEHOLDER PASSWORD
+                                               if(pass.equals("MREYRHMIUWAA")) 
                                                {
-                                                   Player.addItem(new Item("Shears", "A pair of shears")); //TODO: PLACEHOLDER
+                                                   Player.addItem(new Item("Shears", "A pair of shears strong enough to cut through fur")); 
                                                    return CommandResult.success(null, "The screen flashes green for a moment, " +
                                                                                       "before going black. You hear a soft " +
                                                                                       "click, and the computer screen unlatches" +
