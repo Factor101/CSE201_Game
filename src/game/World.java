@@ -253,7 +253,8 @@ public class World
                                            }
                                     	   Player.getInventory().add(new Item("Keycard", "This keycard is the personal property of Dr. Grobu, resident and chief of the transient research facility."));
                                            return CommandResult.success(null,
-                                                                        "You examine Dr.Grobu closely. He appears to have gone through some freak transformation. You see the keycard that is dangling from his chest and grab it. Its now in your inventory\\n");
+                                                                        "You examine Dr.Grobu closely. He appears to have gone " +
+                                                                        "through some freak transformation. You see the keycard that is dangling from his chest and grab it.\n");
                                        }));
                                    }}));
                                }},
