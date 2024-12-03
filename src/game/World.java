@@ -118,12 +118,24 @@ public class World
                                    add(new RoomFeature("Animal on the floor", "", new ArrayList<Command<?>>()
                                    {
                                        {
-                                           add(new Command<Void>("cages", args -> {
-                                               return CommandResult.success(null,
-                                               "As you look at the two cages on your right you can make out name tags on the cages. On top of the cage with the red animal inside you can see a nametage “Zephyrhound”. " +
-                                               "On top of the second cage with the blue animal inside you see another nametag that reads “Luminarks”.As you look at the two cages on your left you can make out name tags " +
-                                                "on the cages. On top of the cage with the green animal inside you can see a nametage “Shardwalker“. On top of the second cage that is busted open you can see a nametag that read “Mirequills”"
-                                               );
+                                           add(new Command<Void>("animal", args -> {
+                                               if(Player.hasItem("ANIMAL_NAME Fur")) //TODO: PLACEHOLDER
+                                               {
+                                                    return CommandResult.success(null, "There's no more fur to shear.");
+                                               }
+
+                                               if(Player.hasItem("Shears"))
+                                               {
+                                                   System.out.println("TODO FINISH THIS You sheared the animal fur ");
+                                                   Player.addItem(new Item("ANIMAL_NAME Fur", "somedesc"));  //TODO: PLACEHOLDER
+                                                   return CommandResult.success("YOU DID SOME SHIT HELL YEAH BROTHER");
+                                               }
+                                               else
+                                               {
+                                                   return CommandResult.success("The coat of the dead ANIMAL_NAME could be " +
+                                                                                "useful. You should look for something to cut " +
+                                                                                "it off.");              //TODO: PLACEHOLDER
+                                               }
                                            }));
                                        }
                                    }));
@@ -242,9 +254,6 @@ public class World
                                }},
                                new HashMap<>(Collections.emptyMap()),
                                null));
-
-
-        System.out.println("Rooms initialized");
     }
 
     public static void initializeDefaultCommands()

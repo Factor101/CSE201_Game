@@ -55,6 +55,11 @@ public record CommandResult<T>(T result, String message, boolean isSuccess)
         return new CommandResult<T>(result, message, true);
     }
 
+    public static <T> CommandResult<T> success(final String message)
+    {
+        return new CommandResult<T>(null, message, true);
+    }
+
     /**
      * Static method to create a failed result with a message.
      *
