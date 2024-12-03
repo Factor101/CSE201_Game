@@ -17,6 +17,7 @@ public class Main
     public static void main(String[] args)
     {
         World.initializeRooms();
+        World.titleScreen();
         Player.setPosition(new int[]{ 0, 1 });
 
         // main event loop
