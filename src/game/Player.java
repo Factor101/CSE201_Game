@@ -52,6 +52,11 @@ public abstract class Player
         return false;
     }
 
+    public static boolean removeItem(Item item)
+    {
+        return Player.inventory.remove(item);
+    }
+
     /**
      * Method to determine if the player has a given item.
      *
