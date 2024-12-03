@@ -61,12 +61,40 @@ public class World
                                new ArrayList<Item>(),
                                new ArrayList<RoomFeature>()
                                {{
-                                   add(new RoomFeature("", "A broken pipe desc//TODO", new ArrayList<Command<?>>()
+                                   add(new RoomFeature("four cages", "Four cages are present in the room with three of them still containing animals and one busted open", new ArrayList<Command<?>>()
                                    {
                                        {
-                                           add(new Command<Void>("pipe", args -> {
+                                           add(new Command<Void>("cages", args -> {
                                                return CommandResult.success(null,
-                                                                            "You examine the broken pipe closely." + "It appears to have been damaged recently," + "with strange claw marks around the edges. " + "The pipe seems to have once carried some kind of " + "coolant for the genetic testing equipment.");
+                                               "As you look at the two cages on your right you can make out name tags on the cages. On top of the cage with the red animal inside you can see a nametage “Zephyrhound”. " + 
+                                               "On top of the second cage with the blue animal inside you see another nametag that reads “Luminarks”.As you look at the two cages on your left you can make out name tags " +
+                                                "on the cages. On top of the cage with the green animal inside you can see a nametage “Shardwalker“. On top of the second cage that is busted open you can see a nametag that read “Mirequills”"
+                                               );
+                                           }));
+                                       }
+                                   }));
+
+                                   add(new RoomFeature("Computer terminal", "A terminal on the back wall of the room", new ArrayList<Command<?>>()
+                                   {
+                                       {
+                                           add(new Command<Void>("Computer", 1, args -> {
+
+                                               return CommandResult.success(null,
+                                               "As you look at the two cages on your right you can make out name tags on the cages. On top of the cage with the red animal inside you can see a nametage “Zephyrhound”. "
+                                               );
+                                           }));
+                                       }
+                                   }));
+
+                                   add(new RoomFeature("Animal on the floor", "", new ArrayList<Command<?>>()
+                                   {
+                                       {
+                                           add(new Command<Void>("cages", args -> {
+                                               return CommandResult.success(null,
+                                               "As you look at the two cages on your right you can make out name tags on the cages. On top of the cage with the red animal inside you can see a nametage “Zephyrhound”. " + 
+                                               "On top of the second cage with the blue animal inside you see another nametag that reads “Luminarks”.As you look at the two cages on your left you can make out name tags " +
+                                                "on the cages. On top of the cage with the green animal inside you can see a nametage “Shardwalker“. On top of the second cage that is busted open you can see a nametag that read “Mirequills”"
+                                               );
                                            }));
                                        }
                                    }));
