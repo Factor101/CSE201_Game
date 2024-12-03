@@ -199,7 +199,7 @@ public class World
                                    }}));
                                }},
                                new HashMap<>(Collections.emptyMap()),
-                               (args) -> {
+                               (_) -> {
                                    final Item keycard = Player.getItem("Keycard");
                                    if(keycard != null)
                                    {
