@@ -73,6 +73,12 @@ public class CommandHandler
         	
         	return CommandResult.success(null);
         }));
+
+        // Yell command
+        put("yell", new Command<Void>("yell", 0, args -> {
+        	System.out.println("You yell for help...\nYou hear nothing in response. You must help yourself.");
+        	return CommandResult.success(null);
+        }));
         
         // Inventory game.Command
         put("inventory", new Command<Void>("inventory", 0, args -> {
