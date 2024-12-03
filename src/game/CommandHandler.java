@@ -80,10 +80,14 @@ public class CommandHandler
         }));
 
         // Investigate command
-        put("investigate", new Command<Void>("investigate", 1, args -> {
+        put("investigate", new Command<Void>("investigate", 0, args -> {
             final Room room = Player.getCurrentRoom();
-            System.out.printf("You looked around %s. A few things caught your eye: %s%n",
-                              room.getName());
+            System.out.println("You looked around. A few things caught your eye:");
+            for(RoomFeature e : room.getFeatures())
+            {
+                System.out.printf("\t%s: %s%n", e.getName(), e.getDescription());
+            }
+
             return CommandResult.success(null);
         }));
 

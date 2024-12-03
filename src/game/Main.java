@@ -27,7 +27,7 @@ public class Main
         {
             // prompt, parse, and execute the command
             // user will enter a command + args (where applicable)
-            final String userInput = InputHandler.promptCommand("Enter a command:");
+            final String userInput = InputHandler.promptCommand("What do you do?");
             final CommandResult<?> result = InputHandler.parseAndExecute(userInput);
 
             // output the result
