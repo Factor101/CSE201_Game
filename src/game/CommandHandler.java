@@ -65,6 +65,15 @@ public class CommandHandler
             return CommandResult.success(pt, "You ventured " + args[0]);
         }));
 
+        // Quit command
+        put("quit", new Command<Void>("quit", 0, args -> {
+        	System.out.println("Quitting game...");
+        	
+        	System.exit(0);
+        	
+        	return CommandResult.success(null);
+        }));
+        
         // Inventory game.Command
         put("inventory", new Command<Void>("inventory", 0, args -> {
             System.out.println("You inventory consists of:");
