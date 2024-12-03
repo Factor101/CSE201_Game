@@ -281,4 +281,19 @@ public class World
     {
         return World.rooms;
     }
+
+    public static void titleScreen() {
+    	System.out.println("  __  __          _____   _____ ");
+    	System.out.println(" |  \\/  |   /\\   |  __ \\ / ____|");
+    	System.out.println(" | \\  / |  /  \\  | |__) | (___  ");
+    	System.out.println(" | |\\/| | / /\\ \\ |  _  / \\___ \\ ");
+    	System.out.println(" | |  | |/ ____ \\| | \\ \\ ____) |");
+    	System.out.println(" |_|  |_/_/    \\_\\_|  \\_\\_____/ ");
+    	System.out.println("\t  ______  _____  _____          _____  ______ ");
+    	System.out.println("\t |  ____|/ ____|/ ____|   /\\   |  __ \\|  ____|");
+    	System.out.println("\t | |__  | (___ | |       /  \\  | |__) | |__   ");
+    	System.out.println("\t |  __|  \\___ \\| |      / /\\ \\ |  ___/|  __|  ");
+    	System.out.println("\t | |____ ____) | |____ / ____ \\| |    | |____ ");
+    	System.out.println("\t |______|_____/ \\_____/_/    \\_\\_|    |______|\n");
+    }
 }
