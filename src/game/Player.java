@@ -64,12 +64,13 @@ public abstract class Player
      *
      * @return The item if the player has the item, null otherwise.
      */
-    public static Item getItem(Item item)
+    public static Item getItem(String name)
     {
         // iterate over inventory until item is found
         for(final Item e : Player.inventory)
         {
-            if(e == item)
+            if(e.getName()
+                .equalsIgnoreCase(name))
             {
                 return e;
             }

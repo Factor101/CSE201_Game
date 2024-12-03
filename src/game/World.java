@@ -154,7 +154,7 @@ public class World
                                                    System.out.println("TODO FINISH THIS You sheared the animal fur ");
                                                    Player.addItem(new Item("Mirequills Fur",  "The bright orange fur glows as you stare at it. The result of multiple rounds of radiation testing and gene editing.\r\n"
                                                                                                               ));  
-                                                   return CommandResult.success("You cut the fur off the animal succesfully and your now ready to go to the final mixing room");
+                                                   return CommandResult.success("You cut the fur off the animal successfully and your now ready to go to the final mixing room");
                                                }
                                                else
                                                {
