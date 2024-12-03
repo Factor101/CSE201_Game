@@ -48,4 +48,13 @@ public class InputHandler
 
         return userInput;
     }
+
+    public static String promptInput(final String promptText)
+    {
+        System.out.printf("%s\n > ", promptText); // print prompt
+        final String userInput = stdin.nextLine(); // get user input
+        System.out.println(); // print a newline
+
+        return userInput;
+    }
 }
