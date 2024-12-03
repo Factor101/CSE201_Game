@@ -199,9 +199,10 @@ public class World
                                }},
                                new HashMap<>(Collections.emptyMap()),
                                () -> {
-                                   if(Player.hasItem("Keycard"))
+                                   final Item keycard = Player.getItem("Keycard");
+                                   if(keycard != null)
                                    {
-                                       Player.removeItem("Keycard");
+                                       Player.removeItem(keycard);
                                        System.out.println("You pass the scavenged keycard through the reader.\nA dull beep " +
                                                           "sounds, before the door to East opens.");
                                        return true;
