@@ -57,8 +57,13 @@ public class Command<T>
      */
     public CommandResult<T> exec(String[] args)
     {
-        return args.length == this.expectedArgc ? this.callback.apply(args)
-                                                : CommandResult.failArgs(args, this.expectedArgc);
+        // if expectedArgc is -1 then allow any number of arguments
+        if(this.expectedArgc != -1 && args.length != this.expectedArgc)
+        {
+            return CommandResult.failArgs(args, this.expectedArgc);
+        }
+
+        return this.callback.apply(args);
     }
 
     /**

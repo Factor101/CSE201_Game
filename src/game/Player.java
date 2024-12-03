@@ -39,6 +39,19 @@ public abstract class Player
         return false;
     }
 
+    public static boolean hasItem(String itemName)
+    {
+        for(final Item e : Player.inventory)
+        {
+            if(e.getName().equalsIgnoreCase(itemName))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     /**
      * Method to determine if the player has a given item.
      *

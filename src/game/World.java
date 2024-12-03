@@ -66,7 +66,7 @@ public class World
                                        {
                                            add(new Command<Void>("cages", args -> {
                                                return CommandResult.success(null,
-                                               "As you look at the two cages on your right you can make out name tags on the cages. On top of the cage with the red animal inside you can see a nametage “Zephyrhound”. " + 
+                                               "As you look at the two cages on your right you can make out name tags on the cages. On top of the cage with the red animal inside you can see a nametage “Zephyrhound”. " +
                                                "On top of the second cage with the blue animal inside you see another nametag that reads “Luminarks”.As you look at the two cages on your left you can make out name tags " +
                                                 "on the cages. On top of the cage with the green animal inside you can see a nametage “Shardwalker“. On top of the second cage that is busted open you can see a nametag that read “Mirequills”"
                                                );
@@ -91,7 +91,7 @@ public class World
                                        {
                                            add(new Command<Void>("cages", args -> {
                                                return CommandResult.success(null,
-                                               "As you look at the two cages on your right you can make out name tags on the cages. On top of the cage with the red animal inside you can see a nametage “Zephyrhound”. " + 
+                                               "As you look at the two cages on your right you can make out name tags on the cages. On top of the cage with the red animal inside you can see a nametage “Zephyrhound”. " +
                                                "On top of the second cage with the blue animal inside you see another nametag that reads “Luminarks”.As you look at the two cages on your left you can make out name tags " +
                                                 "on the cages. On top of the cage with the green animal inside you can see a nametage “Shardwalker“. On top of the second cage that is busted open you can see a nametag that read “Mirequills”"
                                                );
@@ -115,7 +115,7 @@ public class World
                                                                         "You see an open compartment at the bottom of the desk and a letter sitting on the desk.");
                                        }));
                                    }}));
-                                   
+
                                    add(new RoomFeature("Letter", "A letter sitting on top of the desk.", new ArrayList<Command<?>>()
                                    {{
                                        add(new Command<Void>("letter", args -> {
@@ -123,7 +123,7 @@ public class World
                                                                         "Welcome to the Transient research facility. I wrote this letter before clicking the time release button on your stasis pod. This horrible disease has mutated me into what I am today and destroyed our planet. I have done all of the work for you to synthesize a cure. First in the gas bottling room vault you have to get (clowth gas), then in the genetic testing room you have to get the fur of a bright orange monster. Finally you will have to mix both ingredients in our mixing room. Synthesize a cure and save the planet. -Dr. Grobu");
                                        }));
                                    }}));
-                                   
+
                                    add(new RoomFeature("Map", "A map on the wall.", new ArrayList<Command<?>>()
                                    {{
                                        add(new Command<Void>("map", args -> {
