@@ -312,7 +312,20 @@ public class World
                                    }}));
                                }},
                                new HashMap<>(Collections.emptyMap()),
-                               null));
+                               (_) -> {
+                                   final Item fur = Player.getItem("Mirequills Fur");
+                                   final Item gas = Player.getItem("Clowth Gas");
+                                   if(fur != null && gas != null)
+                                   {
+                                       System.out.println("You were able to successfully enter the room.\n");
+                                       return true;
+                                   }
+                                   else
+                                   {
+                                       System.out.println("You need the Mirequills Fur and Clowth Gas to enter the room.\n");
+                                       return false;
+                                   }
+                               }));
 
         World.addRoom(new Room("Yard",
                                "As you walk outside you see the door to the spaceship open and it feels like there is only one thing left to do. Get off of this planet.",
