@@ -48,7 +48,8 @@ public class World
                                    {{
                                        add(new Command<Void>("pipe", args -> {
                                            return CommandResult.success(null,
-                                                                        "As soon as you walk in it looks as if smoke has filled up the entire room. Through the gas mask you spot a broken pipe to your right, a vault to your left, and a large chemistry desk in front of you with a poster of the periodic table.\r\n" + //
+                                                                        "As you go near the gas pipe, three unique elements ping your nose. It smells like Argon, Krypton, and Radon.\r\n" + //
+                                                                                                                                                        "" + //
                                                                                                                                                         "");
                                        }));
                                    }}));
@@ -215,7 +216,7 @@ public class World
                                            }
                                     	   Player.getInventory().add(new Item("Keycard", "This keycard is the personal property of Dr. Grobu, resident and chief of the transient research facility."));
                                            return CommandResult.success(null,
-                                                                        "You examine Dr.Grobu closely. He appears to have gone through some freak transformation. You see the keycard that is dangling from his chest.\\n");
+                                                                        "You examine Dr.Grobu closely. He appears to have gone through some freak transformation. You see the keycard that is dangling from his chest and grab it. Its now in your inventory\\n");
                                        }));
                                    }}));
                                }},
