@@ -19,7 +19,7 @@ public class Room
     private final ArrayList<RoomFeature> features; // features within the room
     private final String description; // room description
     private final int[] position; // room position as a Point
-    private final HashMap<String, Command<?>> contextualCommands; // commands unique to this room
+    private final HashMap<String, Command<?>> contextualCommands = new HashMap<>(); // commands unique to this room
     private Function<Void, Boolean> checkEntry;
 
     /**
@@ -43,23 +43,8 @@ public class Room
         this.description = desc;
         this.position = pt;
         this.features = features;
-        this.contextualCommands = commands;
+        this.contextualCommands.putAll(commands);
         this.checkEntry = checkEntry;
-    }
-
-    public Room(String name,
-                String desc,
-                int[] pt,
-                ArrayList<Item> items,
-                Command<?>[] commands,
-                ArrayList<RoomFeature> features,
-                Function<Void, Boolean> checkEntry)
-    {
-        this(name, desc, pt, items, features, new LinkedHashMap<>(), checkEntry);
-        for(Command<?> command : commands)
-        {
-            this.contextualCommands.put(command.getName(), command);
-        }
     }
 
     public Room(String name,
@@ -77,29 +62,6 @@ public class Room
         }
     }
 
-    /**
-     * Creates a new room with a Point instead of int[].
-     *
-     * @param items    list of items in the room
-     * @param desc     description of the room
-     * @param pt       room's position represented as a Point
-     * @param commands list of commands unique to this room
-     */
-    public Room(String name,
-                String desc,
-                Point pt,
-                ArrayList<Item> items,
-                HashMap<String, Command<?>> commands,
-                ArrayList<RoomFeature> features,
-                Function<Void, Boolean> checkEntry)
-    {
-        this(name, desc, new int[]{ (int) pt.getX(), (int) pt.getY() }, items, features, commands, checkEntry);
-    }
-
-    public Room(String name, String desc)
-    {
-        this(name, desc, new int[]{ 0, 0 }, new ArrayList<Item>(), new ArrayList<>(), new HashMap<>(), null);
-    }
 
     /**
      * Checks if the player can enter the room.

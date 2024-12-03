@@ -59,7 +59,7 @@ public class World
                                        {
                                            add(new Command<Void>("PeriodicTable", args -> {
                                                return CommandResult.success(null,
-                                               "You notice something a little strange as soon as your eyes meet the color of the periodic table poster. The atomic numbers of each element are circled and an arrow is pointing from top to bottom. Over the noble gasses.\r\n"                                                
+                                               "You notice something a little strange as soon as your eyes meet the color of the periodic table poster. The atomic numbers of each element are circled and an arrow is pointing from top to bottom. Over the noble gasses.\r\n"
                                                );
                                            }));
                                        }
@@ -75,10 +75,10 @@ public class World
                                                 }
 
                                                 final String pass = InputHandler.promptInput("You walk over to the computer terminal and see" + "'PASSWORD: ' with a blinking cursor.");
-                                               if(pass.equals("18-36-86")) 
+                                               if(pass.equals("18-36-86"))
                                                {
-                                                   Player.addItem(new Item("Tranq Gun", "Used to enter the Genetic Testing room")); 
-                                                   Player.addItem(new Item("Clowth Gas", "This gas has the ability to heal genes at the cellular level")); 
+                                                   Player.addItem(new Item("Tranq Gun", "Used to enter the Genetic Testing room"));
+                                                   Player.addItem(new Item("Clowth Gas", "This gas has the ability to heal genes at the cellular level"));
                                                    return CommandResult.success(null, "The vault slides open and inside you grab a tranq gun and a cannister of clowth gas");
 
                                                }
@@ -121,9 +121,9 @@ public class World
                                                }
 
                                                final String pass = InputHandler.promptInput("You walk over to the computer terminal and see" + "'PASSWORD: ' with a blinking cursor.");
-                                               if(pass.equals("MREYRHMIUWAA")) 
+                                               if(pass.equals("MREYRHMIUWAA"))
                                                {
-                                                   Player.addItem(new Item("Shears", "A pair of shears strong enough to cut through fur")); 
+                                                   Player.addItem(new Item("Shears", "A pair of shears strong enough to cut through fur"));
                                                    return CommandResult.success(null, "The screen flashes green for a moment, " +
                                                                                       "before going black. You hear a soft " +
                                                                                       "click, and the computer screen unlatches" +
@@ -145,7 +145,7 @@ public class World
                                    {
                                        {
                                            add(new Command<Void>("animal", args -> {
-                                               if(Player.hasItem("Mirequills Fur")) 
+                                               if(Player.hasItem("Mirequills Fur"))
                                                {
                                                     return CommandResult.success(null, "There's no more fur to shear.");
                                                }
@@ -154,14 +154,14 @@ public class World
                                                {
                                                    System.out.println("TODO FINISH THIS You sheared the animal fur ");
                                                    Player.addItem(new Item("Mirequills Fur",  "The bright orange fur glows as you stare at it. The result of multiple rounds of radiation testing and gene editing.\r\n"
-                                                                                                              ));  
+                                                                                                              ));
                                                    return CommandResult.success("You cut the fur off the animal successfully and your now ready to go to the final mixing room");
                                                }
                                                else
                                                {
                                                    return CommandResult.success("The coat of the dead Mirequills could be " +
                                                                                 "useful. You should look for something to cut " +
-                                                                                "it off.");              
+                                                                                "it off.");
                                                  }
                                            }));
                                        }
@@ -185,11 +185,12 @@ public class World
                                            }
                                     	   Player.getInventory().add(new Item("Gas Mask", "Needed to be able to enter the gas bottling room. Something seems to be broken."));
                                     	   Player.getInventory().add(new Item("Letter", "Welcome to the Transient research facility. I wrote this letter before clicking the time release button on your stasis pod. This horrible disease has mutated me into what I am today and destroyed our planet. I have done all of the work for you to synthesize a cure. First in the gas bottling room vault you have to get (clowth gas), then in the genetic testing room you have to get the fur of a bright orange monster. Finally you will have to mix both ingredients in our mixing room. Synthesize a cure and save the planet. -Dr. Grobu"));
+
                                            return CommandResult.success(null,
                                                                         "You see an open compartment at the bottom of the desk with a gas mask inside. A letter is sitting on the desk as well. Gas mask and letter added to inventory.\n");
                                        }));
                                    }}));
-                                      
+
                                    add(new RoomFeature("Map", "A map on the wall.", new ArrayList<Command<?>>()
                                    {{
                                        add(new Command<Void>("map", args -> {
@@ -199,7 +200,21 @@ public class World
                                    }}));
                                }},
                                new HashMap<>(Collections.emptyMap()),
-                               null));
+                               (args) -> {
+                                   final Item keycard = Player.getItem("Keycard");
+                                   if(keycard != null)
+                                   {
+                                       Player.removeItem(keycard);
+                                       System.out.println("You pass the scavenged keycard through the reader.\nA dull beep " +
+                                                          "sounds, before the door to East opens.");
+                                       return true;
+                                   }
+                                   else
+                                   {
+                                       System.out.println("The door to the east is locked. It appears to require a keycard.");
+                                       return false;
+                                   }
+                               }));
 
         World.addRoom(new Room("Cryo Pod Room",
                                "As you awake from what feels like an extremely long slumber you see a door to the east of you and an alien laying on the ground",
@@ -245,7 +260,7 @@ public class World
                                                                         "You drop the clowth gas into the tube and close the hermetic seal.\n");
                                        }));
                                    }}));
-                                   
+
                                    add(new RoomFeature("Tube-2", "A large tube.", new ArrayList<Command<?>>()
                                    {{
                                        add(new Command<Void>("tube-2", args -> {
@@ -262,7 +277,7 @@ public class World
                                                                         "You drop the Mirequills fur into the tube and close the hermetic seal.\n");
                                        }));
                                    }}));
-                                   
+
                                    add(new RoomFeature("Machine", "A large machine used to make the vaccine.", new ArrayList<Command<?>>()
                                    {{
                                        add(new Command<Void>("machine", args -> {
