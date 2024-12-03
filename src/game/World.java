@@ -260,7 +260,7 @@ public class World
                                    add(new RoomFeature("Machine", "A large machine used to make the vaccine.", new ArrayList<Command<?>>()
                                    {{
                                        add(new Command<Void>("machine", args -> {
-                                    	   if(!Player.hasItem("Mirequills Fur") && !Player.hasItem("Clowth Gas"))
+                                    	   if(Player.hasItem("Mirequills Fur") || Player.hasItem("Clowth Gas"))
                                            {
                                                return CommandResult.success(null, "You must deposit the needed items in the tubes.\n");
                                            }
