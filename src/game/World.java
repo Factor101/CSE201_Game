@@ -28,7 +28,6 @@ public class World
     public static void init()
     {
         World.initializeRooms();
-        World.initializeDefaultCommands();
     }
 
     public static void initializeRooms()
@@ -204,7 +203,6 @@ public class World
                                    final Item keycard = Player.getItem("Keycard");
                                    if(keycard != null)
                                    {
-                                       Player.removeItem(keycard);
                                        System.out.println("You pass the scavenged keycard through the reader.\nA dull beep " +
                                                           "sounds, before the door to East opens.");
                                        return true;
@@ -348,11 +346,6 @@ public class World
                                }},
                                new HashMap<>(Collections.emptyMap()),
                                null));
-    }
-
-    public static void initializeDefaultCommands()
-    {
-
     }
 
     public static void addRooms(Room[] rooms)
