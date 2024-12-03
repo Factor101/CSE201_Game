@@ -45,9 +45,9 @@ public class World
                                    {{
                                        add(new Command<Void>("pipe", args -> {
                                            return CommandResult.success(null,
-                                                                        "As you go near the gas pipe, three unique elements ping your nose. It smells like Argon, Krypton, and Radon.\r\n" + //
-                                                                                                                                                        "" + //
-                                                                                                                                                        "");
+                                                                        "As you go near the gas pipe, three unique elements " +
+                                                                        "ping your nose. It smells like Argon, Krypton, and " +
+                                                                        "Radon.\r\n");
                                        }));
                                    }}));
 
@@ -65,19 +65,21 @@ public class World
                                    add(new RoomFeature("Vault", "looks as if it requires a code", new ArrayList<Command<?>>()
                                    {
                                        {
-                                           add(new Command<Void>("Vault", 0,  args -> {
+                                           add(new Command<Void>("vault", 0,  args -> {
                                                 if(Player.hasItem("Tranq Gun"))
                                                 {
-                                                return CommandResult.success(null, "There's nothing more to do here.");
+                                                    return CommandResult.success(null, "There's nothing more to do here.");
                                                 }
 
-                                                final String pass = InputHandler.promptInput("You walk over to the computer terminal and see" + "'PASSWORD: ' with a blinking cursor.");
-                                               if(pass.equals("18-36-86"))
+                                                final String pass = InputHandler.promptInput("You walk over to the computer " +
+                                                                                             "terminal and see " + "'PASSWORD: ' with a blinking cursor.");
+                                               if(pass.equals("18-36-86") || pass.replace("-", "").equals("183686"))
                                                {
                                                    Player.addItem(new Item("Tranq Gun", "Used to enter the Genetic Testing room"));
                                                    Player.addItem(new Item("Clowth Gas", "This gas has the ability to heal genes at the cellular level"));
-                                                   return CommandResult.success(null, "The vault slides open and inside you grab a tranq gun and a cannister of clowth gas");
-
+                                                   return CommandResult.success(null, "The vault slides open and inside you " +
+                                                                                      "grab a tranq gun and a cannister of " +
+                                                                                      "clowth gas.\n");
                                                }
                                                else
                                                {
