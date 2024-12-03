@@ -61,8 +61,15 @@ public class CommandHandler
             }
 
             Player.setPosition(pt);
-
             return CommandResult.success(pt, "You ventured " + args[0]);
+        }));
+
+        // Investigate command
+        put("investigate", new Command<Void>("investigate", 1, args -> {
+            final Room room = Player.getCurrentRoom();
+            System.out.printf("You looked around %s. A few things caught your eye: %s%n",
+                              room.getName());
+            return CommandResult.success(null);
         }));
 
         // Inventory game.Command
